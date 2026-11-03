@@ -17,12 +17,12 @@
             theme: {
                 extend: {
                     colors: {
+                        // Το χρώμα προσαρμόστηκε ώστε να ταιριάζει ακριβώς με το λογότυπο
                         brand: {
-                            950: '#0c2938',
-                            900: '#0f3648', // Dark brand color (Logo Background)
-                            800: '#134459', 
-                            700: '#1a5c76',
-                            500: '#2b87ab',
+                            950: '#07323e', // Πιο σκούρο για το footer
+                            900: '#0b4b5c', // ΚΥΡΙΩΣ ΧΡΩΜΑ (Ιδιο με logo)
+                            800: '#0e5e73', 
+                            700: '#13758f',
                             100: '#e5f0f4'
                         },
                         sand:   { 50:'#fbfbfa', 100:'#f5f4f0', 200:'#e8e6df', 300:'#d7d4c9' },
@@ -44,12 +44,12 @@
 
         ::-webkit-scrollbar { width:6px; }
         ::-webkit-scrollbar-track { background:#f5f4f0; }
-        ::-webkit-scrollbar-thumb { background:#0f3648; border-radius:3px; }
+        ::-webkit-scrollbar-thumb { background:#0b4b5c; border-radius:3px; }
 
         /* ── Loading Screen ───────────────────────────────── */
         #loader {
             position: fixed; inset: 0; z-index: 9999;
-            background-color: #0f3648;
+            background-color: #0b4b5c; /* Ιδιο χρώμα με το λογότυπο */
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
@@ -134,7 +134,7 @@
             transition: box-shadow .45s ease;
         }
         #site-header.scrolled {
-            box-shadow: 0 4px 30px -10px rgba(6,17,31,.15);
+            box-shadow: 0 4px 30px -10px rgba(6,17,31,.25);
         }
 
         /* ── Image micro-zoom ─────────────────────────────── */
@@ -148,12 +148,6 @@
             100% { transform: translateY(16px); opacity:0; }
         }
         .scroll-cue span { animation: scrollCue 2.2s ease-in-out infinite; }
-
-        /* ── Hero parallax ────────────────────────────────── */
-        .hero-bg {
-            will-change: transform;
-            transform: translateY(0) scale(1.12);
-        }
     </style>
 </head>
 
@@ -161,18 +155,17 @@
 
     <!-- ─────────────────────────── LOADING SCREEN ──────────────────── -->
     <div id="loader">
-        <!-- Το πραγματικό σου λογότυπο -->
         <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="loader-logo">
         <div class="loader-bar"></div>
     </div>
 
     <!-- ─────────────────────────── HEADER ──────────────────────────── -->
+    <!-- Το background είναι πλέον ακριβώς το ίδιο με το λογότυπο (#0b4b5c) -->
     <header id="site-header" class="sticky top-0 z-50 bg-brand-900 border-b border-brand-950">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[84px] flex items-center justify-between">
 
             <!-- Brand (Το λογότυπο αριστερά) -->
             <a href="#top" class="flex items-center group py-2 h-full">
-                <!-- Προσαρμοσμένο ύψος ώστε να κάθεται σωστά χωρίς να αλλοιώνεται -->
                 <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="h-[48px] sm:h-[56px] w-auto object-contain transition-transform group-hover:scale-[1.02]">
             </a>
 
@@ -211,11 +204,11 @@
     <main>
 
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
+        <!-- Αφαιρέθηκε το gradient που προκαλούσε την ασυμφωνία χρώματος. Το φόντο είναι καθαρό brand-900 -->
         <section id="top" class="relative min-h-[88vh] flex items-center justify-center bg-brand-900 overflow-hidden">
 
-            <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-20"
+            <div class="absolute inset-0 bg-cover bg-center opacity-[0.07]"
                  style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80');"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-950/60 via-brand-900/70 to-brand-900"></div>
 
             <div class="relative z-10 text-center px-5 max-w-4xl">
 
@@ -395,7 +388,7 @@
                                 loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
-                            <div class="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_20px_rgba(15,54,72,0.5)]"></div>
+                            <div class="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_20px_rgba(11,75,92,0.5)]"></div>
                         </div>
 
                         <div class="mt-5 text-center">
@@ -470,15 +463,6 @@
         }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-        /* Hero parallax */
-        const heroBg = document.querySelector('.hero-bg');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY < window.innerHeight) {
-                heroBg.style.transform =
-                    `translateY(${window.scrollY * 0.25}px) scale(1.12)`;
-            }
-        }, { passive: true });
     </script>
 </body>
 </html>
