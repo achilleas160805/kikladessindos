@@ -18,7 +18,7 @@
                 extend: {
                     colors: {
                         brand: {
-                            950: '#0c2938', // Darkest for footer
+                            950: '#0c2938',
                             900: '#0f3648', // Dark brand color (Logo)
                             800: '#134459', 
                             700: '#1a5c76',
@@ -57,8 +57,8 @@
             opacity: 0; visibility: hidden;
         }
         .loader-logo {
-            width: 280px; height: auto;
-            opacity: 0; transform: translateY(10px);
+            width: 400px; max-width: 85vw; height: auto; /* Μεγαλύτερο πλάτος */
+            opacity: 0; transform: translateY(15px);
             animation: fadeInLogo 1s ease forwards;
         }
         @keyframes fadeInLogo {
@@ -66,7 +66,7 @@
         }
         .loader-bar {
             margin-top: 40px;
-            width: 120px; height: 2px;
+            width: 160px; height: 2px;
             background: rgba(255,255,255,0.1);
             position: relative; overflow: hidden;
         }
@@ -160,32 +160,25 @@
 
     <!-- ─────────────────────────── LOADING SCREEN ──────────────────── -->
     <div id="loader">
-        <!-- 
-          Τοποθετήστε το πραγματικό αρχείο του λογότυπου στο src. 
-          Εδώ χρησιμοποιείται placeholder SVG που αναπαριστά το λογότυπο.
-        -->
+        <!-- SVG Logo (Πιο καθαρό και μεγαλύτερο) -->
         <svg class="loader-logo" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="50%" y="45%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, serif" font-size="32" letter-spacing="2">Τοπουράδικο</text>
-            <text x="50%" y="60%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, serif" font-size="72" font-weight="700" letter-spacing="8">ΚΥΚΛΑΔΕΣ</text>
-            <text x="50%" y="75%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, serif" font-size="28" letter-spacing="2">Φρέσκο Ψάρι</text>
+            <text x="50%" y="38%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="34" letter-spacing="3">Τοπουράδικο</text>
+            <text x="50%" y="62%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="96" font-weight="700" letter-spacing="10">ΚΥΚΛΑΔΕΣ</text>
+            <text x="50%" y="80%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="30" letter-spacing="3">Φρέσκο Ψάρι</text>
         </svg>
         <div class="loader-bar"></div>
     </div>
 
     <!-- ─────────────────────────── HEADER ──────────────────────────── -->
     <header id="site-header" class="sticky top-0 z-50 bg-brand-900 border-b border-brand-950">
-        <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[76px] flex items-center justify-between">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[84px] flex items-center justify-between">
 
-            <!-- Brand (Logo Image left) -->
-            <a href="#top" class="flex items-center group">
-                <!-- 
-                  Εδώ μπαίνει το πραγματικό αρχείο εικόνας του λογότυπου. 
-                  Χρησιμοποιείται SVG placeholder για να αποδοθεί σωστά το design.
-                -->
-                <svg class="h-10 sm:h-12 w-auto transition-transform group-hover:scale-[1.02]" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="50%" y="45%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="28" letter-spacing="2">Τοπουράδικο</text>
-                    <text x="50%" y="70%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="64" font-weight="700" letter-spacing="6">ΚΥΚΛΑΔΕΣ</text>
-                    <text x="50%" y="92%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="24" letter-spacing="2">Φρέσκο Ψάρι</text>
+            <!-- Brand (Διορθωμένο μέγεθος και στοίχιση) -->
+            <a href="#top" class="flex items-center group py-2">
+                <svg class="h-14 sm:h-[60px] w-auto transition-transform group-hover:scale-[1.02]" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <text x="50%" y="42%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="36" letter-spacing="2">Τοπουράδικο</text>
+                    <text x="50%" y="72%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="80" font-weight="700" letter-spacing="6">ΚΥΚΛΑΔΕΣ</text>
+                    <text x="50%" y="94%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="32" letter-spacing="2">Φρέσκο Ψάρι</text>
                 </svg>
             </a>
 
@@ -435,13 +428,12 @@
 
     <!-- ─────────────────────────── SCRIPTS ─────────────────────────── -->
     <script>
-        /* Loading Screen */
+        /* Loading Screen - Αυξημένος χρόνος αναμονής (2 δευτερόλεπτα) */
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
-            // Small delay to ensure smooth appearance before fading out
             setTimeout(() => {
                 loader.classList.add('hidden');
-            }, 600);
+            }, 2000);
         });
 
         /* Year */
