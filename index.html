@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ψαροταβέρνα Κυκλάδες — Σίνδος, Θεσσαλονίκη</title>
 
-    <!-- Fonts: serif display + clean sans -->
+    <!-- Fonts: Ubuntu everywhere (Greek & Latin) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,8 +23,7 @@
                         slateDark: '#1e2633'
                     },
                     fontFamily: {
-                        sans:    ['Ubuntu', 'system-ui', 'sans-serif'],
-                        display: ['"Cormorant Garamond"', 'Georgia', 'serif']
+                        sans: ['Ubuntu', 'system-ui', 'sans-serif']
                     }
                 }
             }
@@ -34,7 +33,7 @@
     <style>
         html { -webkit-font-smoothing: antialiased; }
         body { font-family:'Ubuntu',sans-serif; background:#fbfbfa; color:#1e2633; }
-        section[id] { scroll-margin-top: 92px; }
+        section[id] { scroll-margin-top: 84px; }
 
         ::-webkit-scrollbar { width:6px; }
         ::-webkit-scrollbar-track { background:#f5f4f0; }
@@ -53,7 +52,6 @@
         .reveal-d3 { transition-delay:.36s; }
         .reveal-d4 { transition-delay:.48s; }
 
-        /* Growing hairline (child of .reveal) */
         .hairline {
             transform: scaleX(0);
             transform-origin: left;
@@ -73,7 +71,7 @@
         .hero-d4 { animation-delay:.75s; }
         .hero-d5 { animation-delay:1s; }
 
-        /* ── Underline link (replaces buttons) ────────────── */
+        /* ── Underline link ───────────────────────────────── */
         .u-link { position: relative; display: inline-block; }
         .u-link::after {
             content:'';
@@ -109,28 +107,15 @@
         }
         .scroll-cue span { animation: scrollCue 2.2s ease-in-out infinite; }
 
-        /* ── Hero parallax target ─────────────────────────── */
+        /* ── Hero parallax ────────────────────────────────── */
         .hero-bg {
             will-change: transform;
             transform: translateY(0) scale(1.12);
-            transition: transform .1s linear;
         }
     </style>
 </head>
 
 <body class="selection:bg-ochre-500 selection:text-white">
-
-    <!-- ─────────────────────────── TOP BAR ─────────────────────────── -->
-    <div class="bg-marine-950 text-sand-200/70 text-[11px] tracking-[0.15em] py-2.5 px-4">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 text-center">
-            <span class="uppercase">Χ. Ακριβού 7 · Σίνδος 574 00</span>
-            <div class="flex items-center gap-4">
-                <span class="uppercase">Καθημερινά έως 23:00</span>
-                <span class="w-px h-3 bg-white/20"></span>
-                <a href="tel:+302310797997" class="u-link uppercase text-sand-100 hover:text-white">231 079 7997</a>
-            </div>
-        </div>
-    </div>
 
     <!-- ─────────────────────────── HEADER ──────────────────────────── -->
     <header id="site-header" class="sticky top-0 z-50 bg-sand-50/90 backdrop-blur-md border-b border-sand-200/60">
@@ -138,10 +123,10 @@
 
             <!-- Brand -->
             <a href="#top" class="flex flex-col leading-none group">
-                <span class="font-display text-[22px] sm:text-[26px] font-medium tracking-tight text-marine-900 transition-colors group-hover:text-ochre-600">
+                <span class="text-[19px] sm:text-[22px] font-bold tracking-tight text-marine-900 transition-colors group-hover:text-ochre-600">
                     Ψαροταβέρνα Κυκλάδες
                 </span>
-                <span class="mt-1 text-[9px] tracking-[0.3em] uppercase text-ochre-600/90">
+                <span class="mt-1 text-[9px] tracking-[0.3em] uppercase font-medium text-ochre-600/90">
                     Fish Tavern · Σίνδος
                 </span>
             </a>
@@ -183,33 +168,31 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex items-center justify-center bg-marine-950 overflow-hidden">
 
-            <!-- Parallax background -->
             <div class="hero-bg absolute inset-0 bg-cover bg-center opacity-30"
                  style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80');"></div>
             <div class="absolute inset-0 bg-gradient-to-b from-marine-950/70 via-marine-950/55 to-marine-900"></div>
 
             <div class="relative z-10 text-center px-5 max-w-4xl">
 
-                <p class="hero-anim hero-d1 text-[10px] sm:text-[11px] tracking-[0.45em] uppercase text-ochre-500 mb-7">
+                <p class="hero-anim hero-d1 text-[10px] sm:text-[11px] tracking-[0.45em] uppercase font-medium text-ochre-500 mb-7">
                     Σίνδος · Θεσσαλονίκη
                 </p>
 
-                <h1 class="hero-anim hero-d2 font-display text-5xl sm:text-7xl md:text-[6.5rem] font-light text-white leading-[0.92] tracking-tight">
+                <h1 class="hero-anim hero-d2 text-5xl sm:text-7xl md:text-[5.8rem] font-bold text-white leading-[0.98] tracking-tight">
                     Ψαροταβέρνα<br>
-                    <span class="italic text-sand-200">Κυκλάδες</span>
+                    <span class="font-light italic text-sand-200">Κυκλάδες</span>
                 </h1>
 
                 <p class="hero-anim hero-d3 mt-9 text-sand-200/75 text-sm sm:text-[15px] font-light leading-relaxed max-w-lg mx-auto">
                     Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.
                 </p>
 
-                <div class="hero-anim hero-d4 mt-11 flex items-center justify-center gap-9 text-[11px] tracking-[0.28em] uppercase">
+                <div class="hero-anim hero-d4 mt-11 flex items-center justify-center gap-9 text-[11px] tracking-[0.28em] uppercase font-medium">
                     <a href="#contact" class="u-link text-sand-100 hover:text-white transition-colors">Επικοινωνία</a>
                     <a href="tel:+302310797997" class="u-link text-ochre-500 hover:text-ochre-600 transition-colors">Καλέστε μας</a>
                 </div>
             </div>
 
-            <!-- Scroll cue -->
             <div class="hero-anim hero-d5 absolute bottom-9 left-1/2 -translate-x-1/2 scroll-cue">
                 <span class="block w-px h-12 bg-gradient-to-b from-transparent via-sand-300/60 to-transparent"></span>
             </div>
@@ -221,13 +204,13 @@
                 <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
 
                     <div class="md:col-span-7">
-                        <p class="reveal text-[10px] tracking-[0.4em] uppercase text-ochre-600 mb-6">
+                        <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-ochre-600 mb-6">
                             Η ταυτότητά μας
                         </p>
 
-                        <h2 class="reveal reveal-d1 font-display text-4xl sm:text-5xl font-light text-marine-900 leading-[1.05] tracking-tight">
+                        <h2 class="reveal reveal-d1 text-4xl sm:text-5xl font-bold text-marine-900 leading-[1.08] tracking-tight">
                             Κυκλαδίτικη αύρα<br>
-                            <span class="italic">στη Σίνδο</span>
+                            <span class="font-light italic">στη Σίνδο</span>
                         </h2>
 
                         <div class="reveal reveal-d2 mt-9">
@@ -242,7 +225,7 @@
                             Με σεβασμό στην πρώτη ύλη, σερβίρουμε καθημερινά ό,τι καλύτερο βγάζει η θάλασσα: προσεγμένα ψησίματα στα κάρβουνα, ανάλαφρο παραδοσιακό τηγάνι, φρέσκες χειροποίητες σαλάτες και εκλεκτά αποστάγματα — με προσιτές τιμές.
                         </p>
 
-                        <div class="reveal reveal-d4 mt-9 flex flex-wrap gap-x-9 gap-y-3 text-[11px] tracking-[0.2em] uppercase text-marine-900/60">
+                        <div class="reveal reveal-d4 mt-9 flex flex-wrap gap-x-9 gap-y-3 text-[11px] tracking-[0.2em] uppercase font-medium text-marine-900/60">
                             <span>Φαγητό στον χώρο</span>
                             <span>Takeaway</span>
                             <span>20–25 € / άτομο</span>
@@ -266,8 +249,8 @@
             <div class="max-w-5xl mx-auto px-5 sm:px-8">
 
                 <div class="text-center mb-16 sm:mb-20">
-                    <p class="reveal text-[10px] tracking-[0.4em] uppercase text-ochre-600">Πληροφορίες</p>
-                    <h2 class="reveal reveal-d1 font-display text-4xl sm:text-5xl font-light text-marine-900 mt-4 tracking-tight">
+                    <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-ochre-600">Πληροφορίες</p>
+                    <h2 class="reveal reveal-d1 text-4xl sm:text-5xl font-bold text-marine-900 mt-4 tracking-tight">
                         Στοιχεία λειτουργίας
                     </h2>
                 </div>
@@ -275,26 +258,26 @@
                 <div class="grid sm:grid-cols-2 gap-x-16 gap-y-12">
 
                     <div class="reveal border-t border-sand-200 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase text-ochre-600 mb-3">Ωράριο</p>
-                        <p class="font-display text-2xl text-marine-900">Καθημερινά</p>
+                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-ochre-600 mb-3">Ωράριο</p>
+                        <p class="text-2xl font-bold text-marine-900">Καθημερινά</p>
                         <p class="mt-2 text-sm text-slateDark/55">Σερβίρουμε έως τις 23:00</p>
                     </div>
 
                     <div class="reveal reveal-d1 border-t border-sand-200 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase text-ochre-600 mb-3">Διεύθυνση</p>
-                        <p class="font-display text-2xl text-marine-900">Χ. Ακριβού 7</p>
+                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-ochre-600 mb-3">Διεύθυνση</p>
+                        <p class="text-2xl font-bold text-marine-900">Χ. Ακριβού 7</p>
                         <p class="mt-2 text-sm text-slateDark/55">Σίνδος 574 00, Θεσσαλονίκη</p>
                     </div>
 
                     <div class="reveal reveal-d2 border-t border-sand-200 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase text-ochre-600 mb-3">Τηλέφωνο</p>
-                        <a href="tel:+302310797997" class="font-display text-2xl text-marine-900 u-link">231 079 7997</a>
+                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-ochre-600 mb-3">Τηλέφωνο</p>
+                        <a href="tel:+302310797997" class="text-2xl font-bold text-marine-900 u-link">231 079 7997</a>
                         <p class="mt-2 text-sm text-slateDark/55">Κρατήσεις &amp; παραγγελίες</p>
                     </div>
 
                     <div class="reveal reveal-d3 border-t border-sand-200 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase text-ochre-600 mb-3">Κόστος</p>
-                        <p class="font-display text-2xl text-marine-900">20–25 €</p>
+                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-ochre-600 mb-3">Κόστος</p>
+                        <p class="text-2xl font-bold text-marine-900">20–25 €</p>
                         <p class="mt-2 text-sm text-slateDark/55">Ανά άτομο</p>
                     </div>
 
@@ -305,11 +288,11 @@
         <!-- ─────────────────────────── CONTACT (FINALE) ─────────────── -->
         <section id="contact" class="bg-marine-950 text-sand-100">
 
-            <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
+            <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-24 sm:pt-32 pb-20 sm:pb-28">
 
                 <div class="text-center mb-16 sm:mb-20">
-                    <p class="reveal text-[10px] tracking-[0.4em] uppercase text-ochre-500">Επικοινωνία</p>
-                    <h2 class="reveal reveal-d1 font-display text-4xl sm:text-6xl font-light text-white mt-4 tracking-tight leading-[1.05]">
+                    <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-ochre-500">Επικοινωνία</p>
+                    <h2 class="reveal reveal-d1 text-4xl sm:text-6xl font-bold text-white mt-4 tracking-tight leading-[1.05]">
                         Ελάτε να μας βρείτε
                     </h2>
                     <p class="reveal reveal-d2 mt-5 text-sand-200/50 text-sm max-w-md mx-auto leading-relaxed">
@@ -317,72 +300,76 @@
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-14 md:gap-8 text-center">
+                <!-- Two-column: contact details left, map right -->
+                <div class="grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
 
-                    <!-- Phone -->
-                    <div class="reveal">
-                        <p class="text-[10px] tracking-[0.4em] uppercase text-ochre-500 mb-4">Τηλέφωνο</p>
-                        <a href="tel:+302310797997" class="font-display text-3xl sm:text-4xl text-white u-link">
-                            231 079 7997
-                        </a>
-                        <p class="mt-4 text-[11px] tracking-wider text-sand-200/40">
-                            Κρατήσεις &amp; παραγγελίες
-                        </p>
+                    <!-- LEFT: contact info -->
+                    <div class="space-y-11">
+
+                        <div class="reveal">
+                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-ochre-500 mb-3">Τηλέφωνο</p>
+                            <a href="tel:+302310797997" class="text-3xl sm:text-4xl font-bold text-white u-link">
+                                231 079 7997
+                            </a>
+                            <p class="mt-3 text-[11px] tracking-wider text-sand-200/40">
+                                Κρατήσεις &amp; παραγγελίες
+                            </p>
+                        </div>
+
+                        <div class="reveal reveal-d1">
+                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-ochre-500 mb-3">Facebook</p>
+                            <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="text-2xl sm:text-3xl font-bold text-white u-link break-all">
+                                kyklades.psarotaverna.sindos
+                            </a>
+                            <p class="mt-3 text-[11px] tracking-wider text-sand-200/40">
+                                Ακολουθήστε μας
+                            </p>
+                        </div>
+
+                        <div class="reveal reveal-d2">
+                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-ochre-500 mb-3">Διεύθυνση</p>
+                            <p class="text-2xl sm:text-3xl font-bold text-white">Χ. Ακριβού 7</p>
+                            <p class="mt-3 text-[11px] tracking-wider text-sand-200/40">
+                                Σίνδος 574 00 · Καθημερινά έως 23:00
+                            </p>
+                        </div>
+
                     </div>
 
-                    <!-- Facebook -->
+                    <!-- RIGHT: map pointing directly to the taverna -->
                     <div class="reveal reveal-d1">
-                        <p class="text-[10px] tracking-[0.4em] uppercase text-ochre-500 mb-4">Facebook</p>
-                        <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
-                           target="_blank" rel="noopener noreferrer"
-                           class="font-display text-2xl sm:text-3xl text-white u-link">
-                            kyklades.psarotaverna
-                        </a>
-                        <p class="mt-4 text-[11px] tracking-wider text-sand-200/40">
-                            Ακολουθήστε μας
-                        </p>
-                    </div>
+                        <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/40">
+                            <iframe
+                                title="Χάρτης — Ψαροταβέρνα Κυκλάδες"
+                                src="https://maps.google.com/maps?q=Ψαροταβέρνα+Κυκλάδες+Σίνδος&z=17&output=embed"
+                                width="100%" height="100%"
+                                style="border:0; filter: grayscale(35%) contrast(1.05) brightness(0.95);"
+                                allowfullscreen
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                            <div class="pointer-events-none absolute inset-0 shadow-[inset_0_0_100px_30px_rgba(6,17,31,0.35)]"></div>
+                        </div>
 
-                    <!-- Address -->
-                    <div class="reveal reveal-d2">
-                        <p class="text-[10px] tracking-[0.4em] uppercase text-ochre-500 mb-4">Διεύθυνση</p>
-                        <p class="font-display text-2xl sm:text-3xl text-white">Χ. Ακριβού 7</p>
-                        <p class="mt-4 text-[11px] tracking-wider text-sand-200/40">
-                            Σίνδος 574 00 · έως 23:00
-                        </p>
+                        <div class="mt-5 text-center">
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=Ψαροταβέρνα+Κυκλάδες+Σίνδος"
+                               target="_blank" rel="noopener noreferrer"
+                               class="text-[11px] tracking-[0.3em] uppercase font-medium text-sand-200/70 hover:text-white transition-colors u-link">
+                                Οδηγίες προς το κατάστημα
+                            </a>
+                        </div>
                     </div>
 
                 </div>
-            </div>
-
-            <!-- ── Full-bleed map — points directly to the taverna ── -->
-            <div class="relative w-full h-[58vh] sm:h-[72vh] overflow-hidden">
-                <iframe
-                    title="Χάρτης — Ψαροταβέρνα Κυκλάδες"
-                    src="https://maps.google.com/maps?q=Ψαροταβέρνα+Κυκλάδες+Σίνδος&z=17&output=embed"
-                    width="100%" height="100%"
-                    style="border:0; filter: grayscale(35%) contrast(1.05) brightness(0.95);"
-                    allowfullscreen
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-
-                <!-- Subtle inner shadow overlay -->
-                <div class="pointer-events-none absolute inset-0 shadow-[inset_0_0_120px_40px_rgba(6,17,31,0.35)]"></div>
-
-                <!-- Directions link (text only, no button) -->
-                <a href="https://www.google.com/maps/dir/?api=1&destination=Ψαροταβέρνα+Κυκλάδες+Σίνδος"
-                   target="_blank" rel="noopener noreferrer"
-                   class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] tracking-[0.3em] uppercase text-white/90 hover:text-white transition-colors u-link drop-shadow-lg">
-                    Οδηγίες προς το κατάστημα
-                </a>
             </div>
         </section>
     </main>
 
     <!-- ─────────────────────────── FOOTER ──────────────────────────── -->
     <footer class="bg-marine-950 border-t border-white/10 py-10">
-        <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] tracking-[0.15em] uppercase text-sand-200/35">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] tracking-[0.15em] uppercase font-medium text-sand-200/35">
             <p>&copy; <span id="current-year"></span> Ψαροταβέρνα Κυκλάδες</p>
             <p>Σίνδος · Θεσσαλονίκη</p>
         </div>
