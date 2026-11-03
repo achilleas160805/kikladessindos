@@ -17,12 +17,11 @@
             theme: {
                 extend: {
                     colors: {
-                        // Το χρώμα προσαρμόστηκε ώστε να ταιριάζει ακριβώς με το λογότυπο
                         brand: {
-                            950: '#07323e', // Πιο σκούρο για το footer
-                            900: '#0b4b5c', // ΚΥΡΙΩΣ ΧΡΩΜΑ (Ιδιο με logo)
-                            800: '#0e5e73', 
-                            700: '#13758f',
+                            950: '#0e3e50', // Σκούρο για footer
+                            900: '#185f78', // ΑΚΡΙΒΩΣ ΤΟ ΧΡΩΜΑ ΤΟΥ ΛΟΓΟΤΥΠΟΥ
+                            800: '#1d708d', 
+                            700: '#2587a8',
                             100: '#e5f0f4'
                         },
                         sand:   { 50:'#fbfbfa', 100:'#f5f4f0', 200:'#e8e6df', 300:'#d7d4c9' },
@@ -44,12 +43,12 @@
 
         ::-webkit-scrollbar { width:6px; }
         ::-webkit-scrollbar-track { background:#f5f4f0; }
-        ::-webkit-scrollbar-thumb { background:#0b4b5c; border-radius:3px; }
+        ::-webkit-scrollbar-thumb { background:#185f78; border-radius:3px; }
 
         /* ── Loading Screen ───────────────────────────────── */
         #loader {
             position: fixed; inset: 0; z-index: 9999;
-            background-color: #0b4b5c; /* Ιδιο χρώμα με το λογότυπο */
+            background-color: #185f78; /* Ιδιο χρώμα με το λογότυπο */
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
@@ -68,7 +67,7 @@
         .loader-bar {
             margin-top: 40px;
             width: 160px; height: 2px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
             position: relative; overflow: hidden;
         }
         .loader-bar::after {
@@ -134,7 +133,7 @@
             transition: box-shadow .45s ease;
         }
         #site-header.scrolled {
-            box-shadow: 0 4px 30px -10px rgba(6,17,31,.25);
+            box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); /* Πιο απαλή σκιά */
         }
 
         /* ── Image micro-zoom ─────────────────────────────── */
@@ -160,13 +159,13 @@
     </div>
 
     <!-- ─────────────────────────── HEADER ──────────────────────────── -->
-    <!-- Το background είναι πλέον ακριβώς το ίδιο με το λογότυπο (#0b4b5c) -->
-    <header id="site-header" class="sticky top-0 z-50 bg-brand-900 border-b border-brand-950">
+    <!-- Το background είναι #185f78 -->
+    <header id="site-header" class="sticky top-0 z-50 bg-brand-900">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[84px] flex items-center justify-between">
 
-            <!-- Brand (Το λογότυπο αριστερά) -->
-            <a href="#top" class="flex items-center group py-2 h-full">
-                <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="h-[48px] sm:h-[56px] w-auto object-contain transition-transform group-hover:scale-[1.02]">
+            <!-- Brand (Το λογότυπο γεμίζει το ύψος για να μην ξεχωρίζει το κουτί του) -->
+            <a href="#top" class="flex items-center h-full group">
+                <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="h-full w-auto object-cover object-left transition-transform group-hover:scale-[1.02]">
             </a>
 
             <!-- Desktop nav -->
@@ -193,7 +192,7 @@
         </div>
 
         <!-- Mobile dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-900 border-t border-brand-950 px-6 py-6 space-y-5">
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-900 border-t border-white/10 px-6 py-6 space-y-5">
             <a href="#about"   class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Ταυτότητα</a>
             <a href="#details" class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Πληροφορίες</a>
             <a href="#contact" class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Επικοινωνία</a>
@@ -204,10 +203,10 @@
     <main>
 
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
-        <!-- Αφαιρέθηκε το gradient που προκαλούσε την ασυμφωνία χρώματος. Το φόντο είναι καθαρό brand-900 -->
         <section id="top" class="relative min-h-[88vh] flex items-center justify-center bg-brand-900 overflow-hidden">
 
-            <div class="absolute inset-0 bg-cover bg-center opacity-[0.07]"
+            <!-- Πολύ διακριτικό background -->
+            <div class="absolute inset-0 bg-cover bg-center opacity-[0.05]"
                  style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80');"></div>
 
             <div class="relative z-10 text-center px-5 max-w-4xl">
@@ -378,7 +377,7 @@
 
                     <!-- RIGHT: map pointing directly to the taverna -->
                     <div class="reveal reveal-d1">
-                        <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-brand-950/50">
+                        <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/30">
                             <iframe
                                 title="Χάρτης — Ψαροταβέρνα Κυκλάδες"
                                 src="https://maps.google.com/maps?q=Ψαροταβέρνα+Κυκλάδες+Σίνδος&z=17&output=embed"
@@ -388,7 +387,7 @@
                                 loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
-                            <div class="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_20px_rgba(11,75,92,0.5)]"></div>
+                            <div class="pointer-events-none absolute inset-0 shadow-[inset_0_0_80px_20px_rgba(24,95,120,0.4)]"></div>
                         </div>
 
                         <div class="mt-5 text-center">
@@ -406,7 +405,7 @@
     </main>
 
     <!-- ─────────────────────────── FOOTER ──────────────────────────── -->
-    <footer class="bg-brand-950 border-t border-brand-900 py-10">
+    <footer class="bg-brand-950 border-t border-white/5 py-10">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] tracking-[0.15em] uppercase font-medium text-white/40">
             <p>&copy; <span id="current-year"></span> Ψαροταβέρνα Κυκλάδες</p>
             <p>Σίνδος · Θεσσαλονίκη</p>
