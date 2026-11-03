@@ -19,7 +19,7 @@
                     colors: {
                         brand: {
                             950: '#0c2938',
-                            900: '#0f3648', // Dark brand color (Logo)
+                            900: '#0f3648', // Dark brand color (Logo Background)
                             800: '#134459', 
                             700: '#1a5c76',
                             500: '#2b87ab',
@@ -57,9 +57,10 @@
             opacity: 0; visibility: hidden;
         }
         .loader-logo {
-            width: 400px; max-width: 85vw; height: auto; /* Μεγαλύτερο πλάτος */
+            width: 380px; max-width: 85vw; height: auto; 
             opacity: 0; transform: translateY(15px);
             animation: fadeInLogo 1s ease forwards;
+            object-fit: contain;
         }
         @keyframes fadeInLogo {
             to { opacity: 1; transform: translateY(0); }
@@ -160,12 +161,8 @@
 
     <!-- ─────────────────────────── LOADING SCREEN ──────────────────── -->
     <div id="loader">
-        <!-- SVG Logo (Πιο καθαρό και μεγαλύτερο) -->
-        <svg class="loader-logo" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="50%" y="38%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="34" letter-spacing="3">Τοπουράδικο</text>
-            <text x="50%" y="62%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="96" font-weight="700" letter-spacing="10">ΚΥΚΛΑΔΕΣ</text>
-            <text x="50%" y="80%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="30" letter-spacing="3">Φρέσκο Ψάρι</text>
-        </svg>
+        <!-- Το πραγματικό σου λογότυπο -->
+        <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="loader-logo">
         <div class="loader-bar"></div>
     </div>
 
@@ -173,13 +170,10 @@
     <header id="site-header" class="sticky top-0 z-50 bg-brand-900 border-b border-brand-950">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[84px] flex items-center justify-between">
 
-            <!-- Brand (Διορθωμένο μέγεθος και στοίχιση) -->
-            <a href="#top" class="flex items-center group py-2">
-                <svg class="h-14 sm:h-[60px] w-auto transition-transform group-hover:scale-[1.02]" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="50%" y="42%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="36" letter-spacing="2">Τοπουράδικο</text>
-                    <text x="50%" y="72%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="80" font-weight="700" letter-spacing="6">ΚΥΚΛΑΔΕΣ</text>
-                    <text x="50%" y="94%" text-anchor="middle" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="32" letter-spacing="2">Φρέσκο Ψάρι</text>
-                </svg>
+            <!-- Brand (Το λογότυπο αριστερά) -->
+            <a href="#top" class="flex items-center group py-2 h-full">
+                <!-- Προσαρμοσμένο ύψος ώστε να κάθεται σωστά χωρίς να αλλοιώνεται -->
+                <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="h-[48px] sm:h-[56px] w-auto object-contain transition-transform group-hover:scale-[1.02]">
             </a>
 
             <!-- Desktop nav -->
@@ -428,7 +422,7 @@
 
     <!-- ─────────────────────────── SCRIPTS ─────────────────────────── -->
     <script>
-        /* Loading Screen - Αυξημένος χρόνος αναμονής (2 δευτερόλεπτα) */
+        /* Loading Screen - Καθυστέρηση 2 δευτερολέπτων */
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
