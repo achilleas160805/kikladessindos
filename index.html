@@ -19,7 +19,7 @@
                     colors: {
                         brand: {
                             950: '#0e3e50',
-                            900: '#185f78', // Χρώμα λογότυπου
+                            900: '#185f78', 
                             800: '#1d708d', 
                             700: '#2587a8',
                             100: '#e5f0f4'
@@ -38,7 +38,7 @@
     <style>
         /* ── Base ─────────────────────────────────────────── */
         html { -webkit-font-smoothing: antialiased; }
-        body { font-family:'Ubuntu',sans-serif; background:#ffffff; color:#1e2633; }
+        body { font-family:'Ubuntu',sans-serif; background:#ffffff; color:#1e2633; overflow-x: hidden; }
         section[id] { scroll-margin-top: 84px; }
 
         ::-webkit-scrollbar { width:6px; }
@@ -100,23 +100,28 @@
         }
         .reveal.is-visible .hairline { transform: scaleX(1); }
 
-        /* ── Hero Background Animation (Ken Burns) ────────── */
-        @keyframes kenBurns {
-            0% { transform: scale(1.12); }
-            100% { transform: scale(1); }
+        /* ── Hero Animations (Smooth & Light) ─────────────── */
+        .hero-bg-img {
+            will-change: transform;
+            transform: translateY(0) scale(1.05); /* Λίγο zoom για να μην φαίνονται κενά κατά το scroll */
         }
 
-        /* ── Hero Intro (Smooth fade, no letter shake) ────── */
-        @keyframes fadeInHero {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes smoothFadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .hero-anim { 
-            opacity: 0; 
-            animation: fadeInHero 1.8s ease-out forwards; 
+        
+        .hero-title {
+            opacity: 0;
+            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+            will-change: transform, opacity;
         }
-        .hero-d1 { animation-delay: 0.5s; }
-        .hero-d2 { animation-delay: 0.9s; }
+        
+        .hero-subtitle {
+            opacity: 0;
+            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s forwards;
+            will-change: transform, opacity;
+        }
 
         /* ── Underline link ───────────────────────────────── */
         .u-link { position: relative; display: inline-block; }
@@ -134,13 +139,9 @@
             transform-origin: left;
         }
 
-        /* ── Header shadow on scroll ──────────────────────── */
-        #site-header {
-            transition: box-shadow .45s ease;
-        }
-        #site-header.scrolled {
-            box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); 
-        }
+        /* ── Header shadow ────────────────────────────────── */
+        #site-header { transition: box-shadow .45s ease; }
+        #site-header.scrolled { box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); }
 
         /* ── Image micro-zoom ─────────────────────────────── */
         .img-zoom img { transition: transform 1.4s cubic-bezier(.16,1,.3,1); }
@@ -208,24 +209,22 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[85vh] flex items-center justify-center bg-black overflow-hidden">
             
-            <!-- Καθαρή Εικόνα με Ken Burns Animation & Φίλτρα Ευκρίνειας -->
-            <div class="absolute inset-0 bg-cover bg-center animate-[kenBurns_20s_ease-out_forwards]"
+            <!-- Εικόνα με Parallax -->
+            <div id="hero-parallax" class="hero-bg-img absolute inset-0 bg-cover bg-center"
                  style="background-image:url('kiklades1.jpg'); filter: contrast(1.05) saturate(1.1) brightness(0.95);"></div>
             
-            <!-- Απαλό σκούρο gradient ΜΟΝΟ στο κάτω μέρος για να διαβάζεται το κείμενο (χωρίς μπλε θόλωμα) -->
+            <!-- Gradient για ευανάγνωστο κείμενο -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
 
-            <!-- Περιεχόμενο -->
+            <!-- Κείμενο -->
             <div class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col justify-end h-[85vh] pb-16 text-center">
                 
-                <!-- Τίτλος -->
-                <h1 class="hero-anim hero-d1 text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-wide mb-3 drop-shadow-lg">
+                <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-wide mb-3 drop-shadow-lg">
                     Ψαροταβέρνα<br>
                     <span class="text-sand-200">Κυκλάδες</span>
                 </h1>
 
-                <!-- Υπότιτλος -->
-                <p class="hero-anim hero-d2 text-white/90 text-xs sm:text-sm font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+                <p class="hero-subtitle text-white/90 text-xs sm:text-sm font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md">
                     Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.
                 </p>
             </div>
@@ -411,6 +410,24 @@
         }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        /* Smooth Parallax Effect στο Hero */
+        const heroBg = document.getElementById('hero-parallax');
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    // Κινεί την εικόνα προς τα κάτω όσο κάνουμε scroll (πιο αργά από την σελίδα)
+                    if (scrollY <= window.innerHeight) {
+                        heroBg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.05)`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
