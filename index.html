@@ -18,7 +18,7 @@
                 extend: {
                     colors: {
                         brand: {
-                            950: '#0e3e50', // Σκούρο για footer
+                            950: '#0e3e50',
                             900: '#185f78', // ΑΚΡΙΒΩΣ ΤΟ ΧΡΩΜΑ ΤΟΥ ΛΟΓΟΤΥΠΟΥ
                             800: '#1d708d', 
                             700: '#2587a8',
@@ -48,7 +48,7 @@
         /* ── Loading Screen ───────────────────────────────── */
         #loader {
             position: fixed; inset: 0; z-index: 9999;
-            background-color: #185f78; /* Ιδιο χρώμα με το λογότυπο */
+            background-color: #185f78;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
@@ -133,7 +133,7 @@
             transition: box-shadow .45s ease;
         }
         #site-header.scrolled {
-            box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); /* Πιο απαλή σκιά */
+            box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); 
         }
 
         /* ── Image micro-zoom ─────────────────────────────── */
@@ -159,11 +159,10 @@
     </div>
 
     <!-- ─────────────────────────── HEADER ──────────────────────────── -->
-    <!-- Το background είναι #185f78 -->
     <header id="site-header" class="sticky top-0 z-50 bg-brand-900">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[84px] flex items-center justify-between">
 
-            <!-- Brand (Το λογότυπο γεμίζει το ύψος για να μην ξεχωρίζει το κουτί του) -->
+            <!-- Brand -->
             <a href="#top" class="flex items-center h-full group">
                 <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="h-full w-auto object-cover object-left transition-transform group-hover:scale-[1.02]">
             </a>
@@ -171,7 +170,6 @@
             <!-- Desktop nav -->
             <nav class="hidden md:flex items-center gap-9 text-[13px] tracking-wide text-white/80">
                 <a href="#about"   class="u-link hover:text-white transition-colors">Ταυτότητα</a>
-                <a href="#details" class="u-link hover:text-white transition-colors">Πληροφορίες</a>
                 <a href="#contact" class="u-link hover:text-white transition-colors">Επικοινωνία</a>
             </nav>
 
@@ -194,7 +192,6 @@
         <!-- Mobile dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-900 border-t border-white/10 px-6 py-6 space-y-5">
             <a href="#about"   class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Ταυτότητα</a>
-            <a href="#details" class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Πληροφορίες</a>
             <a href="#contact" class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Επικοινωνία</a>
             <a href="tel:+302310797997" class="block pt-3 text-[13px] tracking-wider font-medium text-white u-link">231 079 7997</a>
         </div>
@@ -204,13 +201,10 @@
 
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex items-center justify-center bg-brand-900 overflow-hidden">
-
-            <!-- Πολύ διακριτικό background -->
             <div class="absolute inset-0 bg-cover bg-center opacity-[0.05]"
                  style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80');"></div>
 
             <div class="relative z-10 text-center px-5 max-w-4xl">
-
                 <p class="hero-anim hero-d1 text-[10px] sm:text-[11px] tracking-[0.45em] uppercase font-medium text-white/60 mb-7">
                     Σίνδος · Θεσσαλονίκη
                 </p>
@@ -281,50 +275,8 @@
             </div>
         </section>
 
-        <!-- ─────────────────────────── DETAILS ──────────────────────── -->
-        <section id="details" class="py-24 sm:py-32 bg-sand-50">
-            <div class="max-w-5xl mx-auto px-5 sm:px-8">
-
-                <div class="text-center mb-16 sm:mb-20">
-                    <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-700">Πληροφορίες</p>
-                    <h2 class="reveal reveal-d1 text-4xl sm:text-5xl font-bold text-brand-950 mt-4 tracking-tight">
-                        Στοιχεία λειτουργίας
-                    </h2>
-                </div>
-
-                <div class="grid sm:grid-cols-2 gap-x-16 gap-y-12">
-
-                    <div class="reveal border-t border-brand-900/10 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-brand-700 mb-3">Ωράριο</p>
-                        <p class="text-2xl font-bold text-brand-950">Καθημερινά</p>
-                        <p class="mt-2 text-sm text-slateDark/55">Σερβίρουμε έως τις 23:00</p>
-                    </div>
-
-                    <div class="reveal reveal-d1 border-t border-brand-900/10 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-brand-700 mb-3">Διεύθυνση</p>
-                        <p class="text-2xl font-bold text-brand-950">Χ. Ακριβού 7</p>
-                        <p class="mt-2 text-sm text-slateDark/55">Σίνδος 574 00, Θεσσαλονίκη</p>
-                    </div>
-
-                    <div class="reveal reveal-d2 border-t border-brand-900/10 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-brand-700 mb-3">Τηλέφωνο</p>
-                        <a href="tel:+302310797997" class="text-2xl font-bold text-brand-950 u-link">231 079 7997</a>
-                        <p class="mt-2 text-sm text-slateDark/55">Κρατήσεις &amp; παραγγελίες</p>
-                    </div>
-
-                    <div class="reveal reveal-d3 border-t border-brand-900/10 pt-7">
-                        <p class="text-[10px] tracking-[0.32em] uppercase font-medium text-brand-700 mb-3">Κόστος</p>
-                        <p class="text-2xl font-bold text-brand-950">20–25 €</p>
-                        <p class="mt-2 text-sm text-slateDark/55">Ανά άτομο</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
         <!-- ─────────────────────────── CONTACT (FINALE) ─────────────── -->
         <section id="contact" class="bg-brand-900 text-white">
-
             <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-24 sm:pt-32 pb-20 sm:pb-28">
 
                 <div class="text-center mb-16 sm:mb-20">
@@ -337,45 +289,46 @@
                     </p>
                 </div>
 
-                <!-- Two-column: contact details left, map right -->
-                <div class="grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+                <div class="grid lg:grid-cols-2 gap-14 lg:gap-16 items-start">
 
-                    <!-- LEFT: contact info -->
-                    <div class="space-y-11">
-
+                    <!-- LEFT: contact info (Πιο μικρά γράμματα, όλα τα στοιχεία μαζί) -->
+                    <div class="space-y-8">
+                        
                         <div class="reveal">
-                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Τηλέφωνο</p>
-                            <a href="tel:+302310797997" class="text-3xl sm:text-4xl font-bold text-white u-link">
+                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-2">Τηλέφωνο</p>
+                            <a href="tel:+302310797997" class="text-xl sm:text-2xl font-bold text-white u-link">
                                 231 079 7997
                             </a>
-                            <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">
-                                Κρατήσεις &amp; παραγγελίες
-                            </p>
+                            <p class="mt-2 text-xs text-brand-100/50">Κρατήσεις &amp; παραγγελίες</p>
                         </div>
 
                         <div class="reveal reveal-d1">
-                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Facebook</p>
-                            <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
-                               target="_blank" rel="noopener noreferrer"
-                               class="text-2xl sm:text-3xl font-bold text-white u-link break-all">
-                                kyklades.psarotaverna.sindos
-                            </a>
-                            <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">
-                                Ακολουθήστε μας
-                            </p>
+                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-2">Διεύθυνση</p>
+                            <p class="text-xl sm:text-2xl font-bold text-white">Χ. Ακριβού 7</p>
+                            <p class="mt-2 text-xs text-brand-100/50">Σίνδος 574 00, Θεσσαλονίκη</p>
                         </div>
 
                         <div class="reveal reveal-d2">
-                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Διεύθυνση</p>
-                            <p class="text-2xl sm:text-3xl font-bold text-white">Χ. Ακριβού 7</p>
-                            <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">
-                                Σίνδος 574 00 · Καθημερινά έως 23:00
-                            </p>
+                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-2">Ωράριο &amp; Κόστος</p>
+                            <p class="text-xl sm:text-2xl font-bold text-white">Καθημερινά έως 23:00</p>
+                            <p class="mt-2 text-xs text-brand-100/50">20–25 € ανά άτομο</p>
+                        </div>
+
+                        <div class="reveal reveal-d3 pt-4">
+                            <!-- Κουμπί Facebook -->
+                            <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2.5 px-6 py-3 bg-white text-brand-950 rounded text-[13px] font-medium tracking-wide hover:bg-sand-100 transition-colors">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                                Facebook
+                            </a>
                         </div>
 
                     </div>
 
-                    <!-- RIGHT: map pointing directly to the taverna -->
+                    <!-- RIGHT: map -->
                     <div class="reveal reveal-d1">
                         <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/30">
                             <iframe
@@ -414,7 +367,6 @@
 
     <!-- ─────────────────────────── SCRIPTS ─────────────────────────── -->
     <script>
-        /* Loading Screen - Καθυστέρηση 2 δευτερολέπτων */
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
@@ -422,10 +374,8 @@
             }, 2000);
         });
 
-        /* Year */
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        /* Mobile menu */
         const btn       = document.getElementById('mobile-menu-btn');
         const menu      = document.getElementById('mobile-menu');
         const iconOpen  = document.getElementById('icon-open');
@@ -445,13 +395,11 @@
             });
         });
 
-        /* Header shadow on scroll */
         const header = document.getElementById('site-header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 8);
         }, { passive: true });
 
-        /* Reveal on scroll */
         const io = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
