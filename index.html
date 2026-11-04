@@ -123,17 +123,17 @@
             animation: smoothFadeUp 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards;
         }
 
-        /* ── Premium Silhouette Animation ─────────────────── */
+        /* ── Detailed Clipart SVG Animation ───────────────── */
         .arm-left {
-            transform-origin: 270px 220px; /* Σημείο περιστροφής ώμου */
+            transform-origin: 280px 250px; /* Σημείο περιστροφής ώμου γυναίκας */
             animation: clinkLeft 5s ease-in-out infinite;
         }
         .arm-right {
-            transform-origin: 530px 220px; /* Σημείο περιστροφής ώμου */
+            transform-origin: 520px 250px; /* Σημείο περιστροφής ώμου άντρα */
             animation: clinkRight 5s ease-in-out infinite;
         }
         .sparkle {
-            transform-origin: 400px 145px;
+            transform-origin: 400px 170px;
             animation: sparkleFade 5s ease-in-out infinite;
             opacity: 0;
         }
@@ -246,94 +246,113 @@
                     Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.
                 </p>
 
-                <!-- Detailed Silhouette SVG Animation (Inspired by your image) -->
-                <div class="hero-svg w-full max-w-2xl mx-auto mt-2">
-                    <svg viewBox="0 0 800 400" class="w-full h-auto drop-shadow-sm" fill="#185f78" xmlns="http://www.w3.org/2000/svg">
+                <!-- Detailed Clipart SVG Animation -->
+                <div class="hero-svg w-full max-w-3xl mx-auto mt-2">
+                    <svg viewBox="0 0 800 500" class="w-full h-auto drop-shadow-sm" fill="#185f78" xmlns="http://www.w3.org/2000/svg">
                         
-                        <!-- Background Elements (Vines & Nets) -->
-                        <path d="M 0 50 Q 400 40 800 50" stroke="#185f78" stroke-width="4" fill="none"/>
-                        <path d="M 50 50 Q 80 120 60 180 M 100 50 Q 120 140 110 200 M 700 50 Q 720 120 740 180" stroke="#185f78" stroke-width="2" fill="none"/>
-                        <path d="M 680 80 Q 750 80 780 130 L 720 150 Z" stroke="#185f78" stroke-width="1.5" fill="none"/>
-                        <path d="M 30 100 Q 100 100 120 150 L 60 170 Z" stroke="#185f78" stroke-width="1.5" fill="none"/>
+                        <!-- BACKGROUND: VINES & NETS -->
+                        <path d="M 0 40 Q 200 80 400 50 T 800 40" stroke="#185f78" stroke-width="4" fill="none"/>
+                        <path d="M 100 50 Q 120 90 100 150 M 300 60 Q 320 100 300 160 M 500 55 Q 520 100 500 150 M 700 50 Q 680 90 700 140" stroke="#185f78" stroke-width="2" fill="none"/>
+                        <!-- Leaves -->
+                        <path d="M 120 100 Q 140 90 150 110 Q 130 120 120 100 Z M 280 120 Q 300 110 310 130 Q 290 140 280 120 Z M 520 90 Q 540 80 550 100 Q 530 110 520 90 Z M 680 110 Q 700 100 710 120 Q 690 130 680 110 Z" fill="#185f78" opacity="0.8"/>
+                        <!-- Fishing Nets -->
+                        <path d="M 50 60 Q 150 90 250 70 L 200 150 Q 100 120 50 60 Z" stroke="#185f78" stroke-width="1.5" fill="none" opacity="0.4"/>
+                        <path d="M 50 60 L 200 150 M 100 80 L 150 130 M 150 70 L 100 120 M 200 70 L 150 150" stroke="#185f78" stroke-width="1" opacity="0.4"/>
+                        
+                        <path d="M 750 60 Q 650 90 550 70 L 600 150 Q 700 120 750 60 Z" stroke="#185f78" stroke-width="1.5" fill="none" opacity="0.4"/>
+                        <path d="M 750 60 L 600 150 M 700 80 L 650 130 M 650 70 L 700 120 M 600 70 L 650 150" stroke="#185f78" stroke-width="1" opacity="0.4"/>
 
-                        <!-- Table Setup -->
-                        <rect x="120" y="280" width="560" height="120" rx="10" fill="#185f78" opacity="0.05"/>
-                        <!-- Checkered Tablecloth Base -->
-                        <path d="M 150 280 Q 400 290 650 280 L 680 350 L 120 350 Z" fill="#185f78" opacity="0.9"/>
-                        <!-- Tablecloth Pattern (White Lines) -->
-                        <path d="M 170 280 L 150 350 M 220 283 L 210 350 M 270 286 L 270 350 M 320 288 L 330 350 M 370 289 L 390 350 M 420 289 L 450 350 M 470 288 L 510 350 M 520 286 L 570 350 M 570 283 L 630 350 M 620 280 L 680 350" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M 150 300 L 650 300 M 140 320 L 660 320 M 130 340 L 670 340" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
-
-                        <!-- Chairs -->
+                        <!-- CHAIRS -->
                         <!-- Left Chair -->
-                        <path d="M 80 400 L 80 220 Q 80 200 100 200 L 130 200 Q 150 200 150 220 L 150 280 L 120 280 L 120 400 M 150 240 L 180 240 L 180 280 M 100 280 L 100 400" fill="#185f78" stroke="#ffffff" stroke-width="1.5"/>
+                        <path d="M 100 500 L 100 280 Q 100 240 130 240 L 160 240 Q 190 240 190 280 L 190 350 L 150 350 L 150 500 M 190 300 L 230 300 L 230 350 M 130 350 L 130 500" fill="#185f78" stroke="#ffffff" stroke-width="1.5"/>
                         <!-- Right Chair -->
-                        <path d="M 720 400 L 720 220 Q 720 200 700 200 L 670 200 Q 650 200 650 220 L 650 280 L 680 280 L 680 400 M 650 240 L 620 240 L 620 280 M 700 280 L 700 400" fill="#185f78" stroke="#ffffff" stroke-width="1.5"/>
+                        <path d="M 700 500 L 700 280 Q 700 240 670 240 L 640 240 Q 610 240 610 280 L 610 350 L 650 350 L 650 500 M 610 300 L 570 300 L 570 350 M 670 350 L 670 500" fill="#185f78" stroke="#ffffff" stroke-width="1.5"/>
 
-                        <!-- Tableware (Plates, Glasses, Bottle) -->
-                        <ellipse cx="400" cy="310" rx="30" ry="8" fill="#ffffff" opacity="0.9"/>
-                        <ellipse cx="400" cy="308" rx="25" ry="6" fill="#185f78"/>
-                        <!-- Wine Bottle -->
-                        <path d="M 390 310 L 390 270 Q 390 260 395 250 L 395 240 L 405 240 L 405 250 Q 410 260 410 270 L 410 310 Z" fill="#ffffff" opacity="0.8"/>
-                        <path d="M 395 280 L 405 280 M 395 285 L 405 285" stroke="#185f78" stroke-width="1"/>
-                        <!-- Glasses on table -->
-                        <path d="M 330 310 L 330 280 M 320 280 L 340 280 L 330 290 Z" fill="#ffffff" opacity="0.7"/>
-                        <path d="M 470 310 L 470 280 M 460 280 L 480 280 L 470 290 Z" fill="#ffffff" opacity="0.7"/>
+                        <!-- TABLE & CLOTH -->
+                        <!-- Table base -->
+                        <rect x="220" y="360" width="360" height="140" fill="#185f78"/>
+                        <!-- Tablecloth drape -->
+                        <path d="M 180 360 Q 400 380 620 360 L 650 450 L 150 450 Z" fill="#185f78"/>
+                        <!-- Tablecloth checkered pattern (White lines) -->
+                        <path d="M 200 370 L 180 450 M 250 375 L 240 450 M 300 378 L 300 450 M 350 379 L 360 450 M 400 380 L 420 450 M 450 379 L 480 450 M 500 378 L 540 450 M 550 375 L 600 450 M 600 370 L 650 450" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+                        <path d="M 180 390 L 620 390 M 170 410 L 630 410 M 160 430 L 640 430" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
 
+                        <!-- TABLEWARE (Plates, Food, Glasses) -->
+                        <!-- Left Plate -->
+                        <ellipse cx="280" cy="360" rx="40" ry="10" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
+                        <path d="M 260 360 Q 280 350 300 360 Q 280 370 260 360 Z" fill="#185f78"/> <!-- Fish shape -->
+                        <!-- Right Plate -->
+                        <ellipse cx="520" cy="360" rx="40" ry="10" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
+                        <path d="M 500 360 Q 520 350 540 360 Q 520 370 500 360 Z" fill="#185f78"/> <!-- Fish shape -->
+                        
+                        <!-- Center Bottle -->
+                        <path d="M 390 360 L 390 310 Q 390 300 395 290 L 395 280 L 405 280 L 405 290 Q 410 300 410 310 L 410 360 Z" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
+                        <path d="M 390 320 L 410 320 M 390 330 L 410 330" stroke="#185f78" stroke-width="1.5"/>
+                        <!-- Center Plate -->
+                        <ellipse cx="400" cy="365" rx="35" ry="8" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
+
+                        <!-- PEOPLE -->
                         <!-- LEFT FIGURE (Woman) -->
                         <g>
-                            <!-- Hair / Body -->
-                            <path d="M 240 280 Q 260 200 280 180 Q 300 160 310 180 Q 330 210 330 240 Q 330 250 320 260 L 310 280 Z" fill="#185f78"/>
-                            <circle cx="275" cy="160" r="15" fill="#185f78"/> <!-- Hair Bun -->
-                            <!-- Face Profile -->
-                            <path d="M 270 140 Q 290 140 300 160 L 295 180 L 280 185 Z" fill="#185f78"/>
-                            <!-- Dress details -->
-                            <path d="M 290 280 L 310 220 L 330 280 Z" fill="#185f78"/>
-                            <!-- Drawn Hand & Glass (Animated) -->
+                            <!-- Body & Dress -->
+                            <path d="M 230 360 Q 250 250 280 230 Q 300 240 310 280 Q 320 330 330 360 Z" fill="#185f78"/>
+                            <!-- Head & Hair -->
+                            <circle cx="280" cy="200" r="25" fill="#185f78"/>
+                            <circle cx="265" cy="175" r="15" fill="#185f78"/> <!-- Hair bun -->
+                            <path d="M 255 200 Q 270 190 285 200 Q 285 220 275 225 L 260 225 Z" fill="#185f78"/> <!-- Face profile -->
+                            <!-- Earring -->
+                            <circle cx="275" cy="215" r="2" fill="#ffffff"/>
+                            <!-- Dress details (White cutouts) -->
+                            <path d="M 270 230 Q 280 250 290 230" stroke="#ffffff" stroke-width="2" fill="none"/>
+                            
+                            <!-- Animated Arm & Glass -->
                             <g class="arm-left">
-                                <path d="M 300 230 Q 360 260 380 180" stroke="#185f78" stroke-width="12" stroke-linecap="round" fill="none"/>
+                                <!-- Arm -->
+                                <path d="M 290 260 Q 350 280 380 200" stroke="#185f78" stroke-width="14" stroke-linecap="round" fill="none"/>
                                 <!-- Hand -->
-                                <circle cx="380" cy="180" r="5" fill="#185f78"/>
+                                <circle cx="380" cy="200" r="5" fill="#185f78"/>
                                 <!-- Glass -->
-                                <path d="M 380 180 L 380 140 M 370 140 L 390 140 L 380 155 Z" fill="#185f78"/>
+                                <path d="M 380 200 L 380 160 M 365 160 L 395 160 L 380 180 Z" fill="#ffffff" stroke="#185f78" stroke-width="2"/>
                                 <!-- Wine -->
-                                <path d="M 373 145 L 387 145 L 380 155 Z" fill="#ffffff" opacity="0.9"/>
+                                <path d="M 370 165 L 390 165 L 380 180 Z" fill="#185f78"/>
                             </g>
                         </g>
 
                         <!-- RIGHT FIGURE (Man) -->
                         <g>
-                            <!-- Body -->
-                            <path d="M 560 280 Q 540 200 520 180 Q 500 160 490 180 Q 470 210 470 240 Q 470 250 480 260 L 490 280 Z" fill="#185f78"/>
-                            <!-- Head -->
-                            <circle cx="525" cy="150" r="18" fill="#185f78"/>
-                            <!-- Face Profile -->
-                            <path d="M 510 135 Q 500 155 510 175 L 525 180 Z" fill="#185f78"/>
-                            <!-- Suit details (White lines for tie/lapel) -->
-                            <path d="M 490 220 L 510 280 M 510 220 L 525 280" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
-                            <!-- Drawn Hand & Glass (Animated) -->
+                            <!-- Body & Suit -->
+                            <path d="M 570 360 Q 550 250 520 230 Q 500 240 490 280 Q 480 330 470 360 Z" fill="#185f78"/>
+                            <!-- Head & Hair -->
+                            <circle cx="520" cy="200" r="25" fill="#185f78"/>
+                            <path d="M 505 180 Q 520 170 535 185 L 540 205 Q 525 195 505 210 Z" fill="#185f78"/> <!-- Hair/Profile -->
+                            <!-- Suit details (White tie & lapels) -->
+                            <path d="M 510 220 L 520 260 L 530 220 Z" fill="#ffffff" opacity="0.8"/>
+                            <path d="M 520 260 L 500 360 M 520 260 L 540 360" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+                            
+                            <!-- Animated Arm & Glass -->
                             <g class="arm-right">
-                                <path d="M 500 230 Q 440 260 420 180" stroke="#185f78" stroke-width="12" stroke-linecap="round" fill="none"/>
+                                <!-- Arm -->
+                                <path d="M 510 260 Q 450 280 420 200" stroke="#185f78" stroke-width="14" stroke-linecap="round" fill="none"/>
                                 <!-- Hand -->
-                                <circle cx="420" cy="180" r="5" fill="#185f78"/>
+                                <circle cx="420" cy="200" r="5" fill="#185f78"/>
                                 <!-- Glass -->
-                                <path d="M 420 180 L 420 140 M 410 140 L 430 140 L 420 155 Z" fill="#185f78"/>
+                                <path d="M 420 200 L 420 160 M 405 160 L 435 160 L 420 180 Z" fill="#ffffff" stroke="#185f78" stroke-width="2"/>
                                 <!-- Wine -->
-                                <path d="M 413 145 L 427 145 L 420 155 Z" fill="#ffffff" opacity="0.9"/>
+                                <path d="M 410 165 L 430 165 L 420 180 Z" fill="#185f78"/>
                             </g>
                         </g>
 
                         <!-- SPARKLE EFFECT AT CONTACT -->
                         <g class="sparkle">
-                            <circle cx="400" cy="145" r="20" stroke="#185f78" stroke-width="2" fill="none"/>
-                            <line x1="400" y1="110" x2="400" y2="125" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="400" y1="165" x2="400" y2="180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="365" y1="145" x2="380" y2="145" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="420" y1="145" x2="435" y2="145" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="375" y1="120" x2="385" y2="130" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="425" y1="120" x2="415" y2="130" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="375" y1="170" x2="385" y2="160" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="425" y1="170" x2="415" y2="160" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="400" cy="170" r="18" stroke="#185f78" stroke-width="2" fill="none"/>
+                            <line x1="400" y1="135" x2="400" y2="150" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="400" y1="190" x2="400" y2="205" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="365" y1="170" x2="380" y2="170" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="420" y1="170" x2="435" y2="170" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="375" y1="145" x2="385" y2="155" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="425" y1="145" x2="415" y2="155" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="375" y1="195" x2="385" y2="185" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="425" y1="195" x2="415" y2="185" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
                         </g>
                     </svg>
                 </div>
