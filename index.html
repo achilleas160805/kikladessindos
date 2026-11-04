@@ -125,11 +125,11 @@
 
         /* ── Realistic SVG Animation (Toasting) ───────────── */
         .arm-left {
-            transform-origin: 260px 220px;
+            transform-origin: 250px 220px; /* Σημείο περιστροφής: ώμος άντρα */
             animation: clinkLeft 4s ease-in-out infinite;
         }
         .arm-right {
-            transform-origin: 540px 220px;
+            transform-origin: 550px 220px; /* Σημείο περιστροφής: ώμος γυναίκας */
             animation: clinkRight 4s ease-in-out infinite;
         }
         .sparkle {
@@ -140,11 +140,11 @@
 
         @keyframes clinkLeft {
             0%, 15%, 100% { transform: rotate(0deg); }
-            20%, 30% { transform: rotate(3deg); }
+            25%, 35% { transform: rotate(4deg); }
         }
         @keyframes clinkRight {
             0%, 15%, 100% { transform: rotate(0deg); }
-            20%, 30% { transform: rotate(-3deg); }
+            25%, 35% { transform: rotate(-4deg); }
         }
         @keyframes sparkleFade {
             0%, 18%, 32%, 100% { opacity: 0; transform: scale(0.8); }
@@ -246,80 +246,76 @@
                     Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.
                 </p>
 
-                <!-- Premium, Realistic Line-Art SVG Animation -->
+                <!-- Premium, Realistic Silhouette SVG Animation -->
                 <div class="hero-svg w-full max-w-3xl mx-auto mt-2">
                     <svg viewBox="0 0 800 350" class="w-full h-auto drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
                         
-                        <!-- Table & Setting -->
-                        <path d="M 100 280 Q 400 290 700 280" stroke="#185f78" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-                        <ellipse cx="400" cy="280" rx="35" ry="6" stroke="#185f78" stroke-width="1" opacity="0.3"/>
-                        <!-- Wine Bottle (Center) -->
-                        <path d="M 395 280 L 395 230 Q 395 220 400 210 Q 405 220 405 230 L 405 280 Z" stroke="#185f78" stroke-width="1.5" stroke-linejoin="round" fill="#185f78" fill-opacity="0.05"/>
-                        <path d="M 398 210 L 402 210" stroke="#185f78" stroke-width="1.5"/>
+                        <!-- Table -->
+                        <path d="M 100 310 Q 400 325 700 310" stroke="#185f78" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                        
+                        <!-- Centerpiece (Bottle & Plate) -->
+                        <path d="M 385 310 L 385 250 Q 385 240 390 230 L 390 210 L 410 210 L 410 230 Q 415 240 415 250 L 415 310 Z" fill="#185f78" fill-opacity="0.1" stroke="#185f78" stroke-width="1" stroke-linejoin="round"/>
+                        <path d="M 395 210 L 405 210" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                        <ellipse cx="400" cy="310" rx="25" ry="4" stroke="#185f78" stroke-width="1" opacity="0.3"/>
 
-                        <!-- LEFT FIGURE (Man) -->
+                        <!-- LEFT FIGURE (Realistic Man Silhouette) -->
                         <g>
-                            <!-- Head & Body Outline -->
-                            <path d="M 180 280 C 200 240 230 200 250 200 C 260 200 270 210 275 230 C 275 230 285 250 280 280" stroke="#185f78" stroke-width="2" stroke-linecap="round" fill="#185f78" fill-opacity="0.03"/>
-                            <!-- Face Profile -->
-                            <path d="M 265 170 C 265 180 260 195 270 200 C 275 205 280 210 280 220" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
-                            <!-- Hair -->
-                            <path d="M 245 170 C 240 160 245 150 255 155 C 265 160 270 170 270 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <!-- Neck / Collar -->
-                            <path d="M 260 225 L 250 250 M 275 225 L 285 250" stroke="#185f78" stroke-width="1" opacity="0.5"/>
+                            <!-- Main Body Silhouette -->
+                            <path d="M 160 310 C 180 240 210 210 240 210 L 240 160 C 240 110 265 95 280 125 C 285 140 285 150 280 155 L 288 165 L 280 170 C 285 180 280 190 270 190 L 260 210 C 290 230 310 280 320 310 Z" fill="#185f78"/>
+                            <!-- White cutout for shirt collar -->
+                            <path d="M 265 210 L 275 230 L 285 210 Z" fill="#ffffff"/>
+                            <!-- Suit Lapel Line -->
+                            <path d="M 275 230 L 260 310" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
                             
-                            <!-- Arm & Glass -->
+                            <!-- Animated Arm & Glass -->
                             <g class="arm-left">
-                                <!-- Arm -->
-                                <path d="M 260 220 Q 310 250 360 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                                <!-- Hand holding glass -->
-                                <circle cx="360" cy="180" r="4" fill="#185f78"/>
-                                <!-- Wine Glass -->
-                                <path d="M 360 175 L 360 140 M 350 140 L 370 140 M 350 140 Q 360 165 370 140" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
-                                <!-- Wine liquid -->
-                                <path d="M 354 145 Q 360 155 366 145 Z" fill="#185f78" fill-opacity="0.3"/>
+                                <!-- Arm path -->
+                                <path d="M 255 215 Q 300 240 350 160" stroke="#185f78" stroke-width="10" stroke-linecap="round" fill="none"/>
+                                <!-- Hand -->
+                                <circle cx="350" cy="160" r="4.5" fill="#185f78"/>
+                                <!-- Wine Glass (White outline for contrast) -->
+                                <path d="M 350 155 L 350 120 M 340 120 L 360 120 M 340 120 Q 350 145 360 120" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <!-- Wine Liquid -->
+                                <path d="M 343 125 Q 350 140 357 125 Z" fill="#ffffff" fill-opacity="0.8"/>
                             </g>
                         </g>
 
-                        <!-- RIGHT FIGURE (Woman) -->
+                        <!-- RIGHT FIGURE (Realistic Woman Silhouette) -->
                         <g>
-                            <!-- Head & Body Outline -->
-                            <path d="M 620 280 C 600 240 570 200 550 200 C 540 200 530 210 525 230 C 525 230 515 250 520 280" stroke="#185f78" stroke-width="2" stroke-linecap="round" fill="#185f78" fill-opacity="0.03"/>
-                            <!-- Face Profile -->
-                            <path d="M 535 170 C 535 180 540 195 530 200 C 525 205 520 210 520 220" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
-                            <!-- Hair & Bun -->
-                            <path d="M 555 170 C 560 160 555 150 545 155 C 535 160 530 170 530 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="560" cy="170" r="10" stroke="#185f78" stroke-width="1.5" fill="#185f78" fill-opacity="0.05"/>
+                            <!-- Main Body Silhouette -->
+                            <path d="M 640 310 C 620 240 590 210 560 210 L 560 160 C 560 110 535 95 520 125 C 515 140 515 150 520 155 L 512 165 L 520 170 C 515 180 520 190 530 190 L 540 210 C 510 230 490 280 480 310 Z" fill="#185f78"/>
+                            <!-- Hair Bun -->
+                            <path d="M 540 115 C 555 105 565 120 560 130 C 555 140 540 140 535 130 C 530 120 535 115 540 115 Z" fill="#185f78"/>
+                            <!-- Neckline Cutout -->
+                            <path d="M 525 210 Q 540 230 555 210 Z" fill="#ffffff"/>
                             <!-- Earring -->
-                            <circle cx="545" cy="200" r="2" fill="#185f78"/>
-                            <!-- Neckline -->
-                            <path d="M 540 225 L 550 250 M 525 225 L 515 250" stroke="#185f78" stroke-width="1" opacity="0.5"/>
+                            <circle cx="525" cy="180" r="1.5" fill="#ffffff"/>
                             
-                            <!-- Arm & Glass -->
+                            <!-- Animated Arm & Glass -->
                             <g class="arm-right">
-                                <!-- Arm -->
-                                <path d="M 540 220 Q 490 250 440 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                                <!-- Hand holding glass -->
-                                <circle cx="440" cy="180" r="4" fill="#185f78"/>
-                                <!-- Wine Glass -->
-                                <path d="M 440 175 L 440 140 M 430 140 L 450 140 M 430 140 Q 440 165 450 140" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
-                                <!-- Wine liquid -->
-                                <path d="M 434 145 Q 440 155 446 145 Z" fill="#185f78" fill-opacity="0.3"/>
+                                <!-- Arm path -->
+                                <path d="M 545 215 Q 500 240 450 160" stroke="#185f78" stroke-width="10" stroke-linecap="round" fill="none"/>
+                                <!-- Hand -->
+                                <circle cx="450" cy="160" r="4.5" fill="#185f78"/>
+                                <!-- Wine Glass (White outline for contrast) -->
+                                <path d="M 450 155 L 450 120 M 440 120 L 460 120 M 440 120 Q 450 145 460 120" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <!-- Wine Liquid -->
+                                <path d="M 443 125 Q 450 140 457 125 Z" fill="#ffffff" fill-opacity="0.8"/>
                             </g>
                         </g>
 
                         <!-- SPARKLE EFFECT AT THE POINT OF CONTACT -->
                         <g class="sparkle">
-                            <circle cx="400" cy="140" r="15" stroke="#185f78" stroke-width="1" opacity="0.4" fill="none"/>
-                            <line x1="400" y1="115" x2="400" y2="125" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="400" y1="155" x2="400" y2="165" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="375" y1="140" x2="385" y2="140" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="415" y1="140" x2="425" y2="140" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="400" cy="140" r="18" stroke="#185f78" stroke-width="1" opacity="0.3" fill="none" stroke-dasharray="4 4"/>
+                            <line x1="400" y1="110" x2="400" y2="125" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="400" y1="155" x2="400" y2="170" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="370" y1="140" x2="385" y2="140" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="415" y1="140" x2="430" y2="140" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
                             
-                            <line x1="383" y1="123" x2="388" y2="128" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="417" y1="123" x2="412" y2="128" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="383" y1="157" x2="388" y2="152" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="417" y1="157" x2="412" y2="152" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="378" y1="118" x2="388" y2="128" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="422" y1="118" x2="412" y2="128" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="378" y1="162" x2="388" y2="152" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="422" y1="162" x2="412" y2="152" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
                         </g>
 
                     </svg>
@@ -403,7 +399,7 @@
 
                 <div class="text-center mb-16 sm:mb-20">
                     <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60">Επικοινωνία</p>
-                    <h2 class="reveal reveal-d1 text-4xl sm:text-6xl font-bold text-white mt-4 tracking-tight leading-[1.05]">
+                    <h2 class="reveal reveal-d1 text-3xl sm:text-4xl font-bold text-white mt-4 tracking-tight leading-[1.05]">
                         Ελάτε να μας βρείτε
                     </h2>
                     <p class="reveal reveal-d2 mt-5 text-brand-100/50 text-sm max-w-md mx-auto leading-relaxed">
@@ -417,7 +413,7 @@
                         
                         <div class="reveal">
                             <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Τηλέφωνο</p>
-                            <a href="tel:+302310797997" class="text-2xl sm:text-3xl font-bold text-white u-link">
+                            <a href="tel:+302310797997" class="text-xl sm:text-2xl font-bold text-white u-link">
                                 231 079 7997
                             </a>
                             <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">Κρατήσεις &amp; παραγγελίες</p>
@@ -425,14 +421,13 @@
 
                         <div class="reveal reveal-d1">
                             <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Διεύθυνση</p>
-                            <p class="text-2xl sm:text-3xl font-bold text-white">Χ. Ακριβού 7</p>
+                            <p class="text-xl sm:text-2xl font-bold text-white">Χ. Ακριβού 7</p>
                             <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">Σίνδος 574 00, Θεσσαλονίκη</p>
                         </div>
 
                         <div class="reveal reveal-d2">
-                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Ωράριο &amp; Κόστος</p>
-                            <p class="text-2xl sm:text-3xl font-bold text-white">Καθημερινά έως 23:00</p>
-                            <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">20–25 € ανά άτομο</p>
+                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Ωράριο</p>
+                            <p class="text-xl sm:text-2xl font-bold text-white">Καθημερινά έως 23:00</p>
                         </div>
 
                         <div class="reveal reveal-d3 pt-4">
