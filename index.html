@@ -139,6 +139,16 @@
         /* ── Header shadow ────────────────────────────────── */
         #site-header { transition: box-shadow .45s ease; }
         #site-header.scrolled { box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); }
+
+        /* ── Map Blur Effect ──────────────────────────────── */
+        .map-blur {
+            filter: grayscale(100%) blur(3px) opacity(0.6) sepia(100%) hue-rotate(170deg) saturate(300%) contrast(90%);
+            transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s ease;
+        }
+        .map-blur:hover {
+            filter: grayscale(0%) blur(0px) opacity(1) sepia(0%) hue-rotate(0deg) saturate(100%) contrast(100%);
+            transform: scale(1.02);
+        }
     </style>
 </head>
 
@@ -196,20 +206,18 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
-            <!-- Background Image: kiklades.jpg με έντονο λευκό blur -->
+            <!-- Background Image: kiklades.jpg με απαλό θόλωμα -->
             <div class="absolute inset-0 z-0">
-                <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[8px] opacity-40 scale-105">
-                <!-- Λευκό overlay για να σιγουρέψουμε ότι τα γράμματα θα είναι ευανάγνωστα -->
-                <div class="absolute inset-0 bg-white/60"></div>
+                <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[4px] opacity-60 scale-105">
             </div>
 
             <!-- Blur & Fade Wrapper -->
             <div id="hero-content" class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center transition-all duration-300">
                 
                 <!-- Typewriter Titles -->
-                <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter drop-shadow-sm"></h1>
+                <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter drop-shadow-md"></h1>
                 
-                <p id="type-sub" class="text-brand-800 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap drop-shadow-sm"></p>
+                <p id="type-sub" class="text-brand-900 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap drop-shadow-md"></p>
                 
             </div>
 
@@ -319,12 +327,9 @@
                             <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">Σίνδος 574 00, Θεσσαλονίκη</p>
                         </div>
 
-                        <div class="reveal reveal-d2">
-                            <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Ωράριο</p>
-                            <p class="text-xl sm:text-2xl font-bold text-white">Καθημερινά έως 23:00</p>
-                        </div>
+                        <!-- Αφαιρέθηκε το Ωράριο -->
 
-                        <div class="reveal reveal-d3 pt-4">
+                        <div class="reveal reveal-d2 pt-4">
                             <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
                                target="_blank" rel="noopener noreferrer"
                                class="inline-flex items-center gap-2.5 px-6 py-3 bg-white text-brand-950 rounded text-[13px] font-medium tracking-wide hover:bg-sand-100 transition-colors">
@@ -336,13 +341,15 @@
                         </div>
                     </div>
 
+                    <!-- Ο Χάρτης με το εφέ θόλωσης -->
                     <div class="reveal reveal-d1">
-                        <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/30">
+                        <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/30 bg-brand-800">
                             <iframe
                                 title="Χάρτης — Ψαροταβέρνα Κυκλάδες"
                                 src="https://maps.google.com/maps?q=Ψαροταβέρνα+Κυκλάδες+Σίνδος&z=17&output=embed"
                                 width="100%" height="100%"
-                                style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);"
+                                class="map-blur"
+                                style="border:0;"
                                 allowfullscreen
                                 loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade">
