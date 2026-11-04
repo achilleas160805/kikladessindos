@@ -196,19 +196,26 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
+            <!-- Background Image: kiklades.jpg με έντονο λευκό blur -->
+            <div class="absolute inset-0 z-0">
+                <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[8px] opacity-40 scale-105">
+                <!-- Λευκό overlay για να σιγουρέψουμε ότι τα γράμματα θα είναι ευανάγνωστα -->
+                <div class="absolute inset-0 bg-white/60"></div>
+            </div>
+
             <!-- Blur & Fade Wrapper -->
             <div id="hero-content" class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center transition-all duration-300">
                 
                 <!-- Typewriter Titles -->
-                <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter"></h1>
+                <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter drop-shadow-sm"></h1>
                 
-                <p id="type-sub" class="text-brand-800/80 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap"></p>
+                <p id="type-sub" class="text-brand-800 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap drop-shadow-sm"></p>
                 
             </div>
 
             <!-- Elegant Minimal Scroll Indicator -->
-            <div id="scroll-indicator" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-300">
-                <span class="text-[10px] tracking-[0.3em] uppercase text-brand-900/50 font-medium">Scroll</span>
+            <div id="scroll-indicator" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-300 z-10">
+                <span class="text-[10px] tracking-[0.3em] uppercase text-brand-900/60 font-medium">Scroll</span>
                 <div class="w-px h-12 bg-brand-900/20 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1/2 bg-brand-900 animate-scroll-dot"></div>
                 </div>
