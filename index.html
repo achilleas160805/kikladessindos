@@ -100,55 +100,24 @@
         }
         .reveal.is-visible .hairline { transform: scaleX(1); }
 
-        /* ── Hero Animations ──────────────────────────────── */
-        @keyframes smoothFadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ── Typewriter Cursor ────────────────────────────── */
+        .cursor-typewriter::after {
+            content: '|';
+            margin-left: 4px;
+            font-weight: 300;
+            animation: blink 1s step-end infinite;
         }
-        
-        .hero-title {
-            opacity: 0;
-            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
-            will-change: transform, opacity;
-        }
-        
-        .hero-subtitle {
-            opacity: 0;
-            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
-            will-change: transform, opacity;
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
-        .hero-svg {
-            opacity: 0;
-            animation: smoothFadeUp 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards;
+        /* ── Elegant Scroll Indicator ─────────────────────── */
+        @keyframes scrollDot {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(200%); }
         }
-
-        /* ── Detailed Clipart SVG Animation ───────────────── */
-        .arm-left {
-            transform-origin: 280px 250px; /* Σημείο περιστροφής ώμου γυναίκας */
-            animation: clinkLeft 5s ease-in-out infinite;
-        }
-        .arm-right {
-            transform-origin: 520px 250px; /* Σημείο περιστροφής ώμου άντρα */
-            animation: clinkRight 5s ease-in-out infinite;
-        }
-        .sparkle {
-            transform-origin: 400px 170px;
-            animation: sparkleFade 5s ease-in-out infinite;
-            opacity: 0;
-        }
-
-        @keyframes clinkLeft {
-            0%, 20%, 100% { transform: rotate(0deg); }
-            28%, 38% { transform: rotate(6deg); }
-        }
-        @keyframes clinkRight {
-            0%, 20%, 100% { transform: rotate(0deg); }
-            28%, 38% { transform: rotate(-6deg); }
-        }
-        @keyframes sparkleFade {
-            0%, 25%, 42%, 100% { opacity: 0; transform: scale(0.6); }
-            30%, 38% { opacity: 1; transform: scale(1.1); }
+        .animate-scroll-dot {
+            animation: scrollDot 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
         /* ── Underline link ───────────────────────────────── */
@@ -170,14 +139,6 @@
         /* ── Header shadow ────────────────────────────────── */
         #site-header { transition: box-shadow .45s ease; }
         #site-header.scrolled { box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); }
-
-        /* ── Scroll cue ───────────────────────────────────── */
-        @keyframes scrollCue {
-            0%   { transform: translateY(0);   opacity:0; }
-            30%  { opacity:1; }
-            100% { transform: translateY(16px); opacity:0; }
-        }
-        .scroll-cue span { animation: scrollCue 2.2s ease-in-out infinite; }
     </style>
 </head>
 
@@ -235,137 +196,27 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
-            <div class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center">
+            <!-- Blur & Fade Wrapper -->
+            <div id="hero-content" class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center transition-all duration-300">
                 
-                <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.1] tracking-wide mb-4">
-                    Ψαροταβέρνα<br>
-                    <span class="text-brand-700">Κυκλάδες</span>
-                </h1>
-
-                <p class="hero-subtitle text-brand-800/80 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto mb-6">
-                    Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.
-                </p>
-
-                <!-- Detailed Clipart SVG Animation -->
-                <div class="hero-svg w-full max-w-3xl mx-auto mt-2">
-                    <svg viewBox="0 0 800 500" class="w-full h-auto drop-shadow-sm" fill="#185f78" xmlns="http://www.w3.org/2000/svg">
-                        
-                        <!-- BACKGROUND: VINES & NETS -->
-                        <path d="M 0 40 Q 200 80 400 50 T 800 40" stroke="#185f78" stroke-width="4" fill="none"/>
-                        <path d="M 100 50 Q 120 90 100 150 M 300 60 Q 320 100 300 160 M 500 55 Q 520 100 500 150 M 700 50 Q 680 90 700 140" stroke="#185f78" stroke-width="2" fill="none"/>
-                        <!-- Leaves -->
-                        <path d="M 120 100 Q 140 90 150 110 Q 130 120 120 100 Z M 280 120 Q 300 110 310 130 Q 290 140 280 120 Z M 520 90 Q 540 80 550 100 Q 530 110 520 90 Z M 680 110 Q 700 100 710 120 Q 690 130 680 110 Z" fill="#185f78" opacity="0.8"/>
-                        <!-- Fishing Nets -->
-                        <path d="M 50 60 Q 150 90 250 70 L 200 150 Q 100 120 50 60 Z" stroke="#185f78" stroke-width="1.5" fill="none" opacity="0.4"/>
-                        <path d="M 50 60 L 200 150 M 100 80 L 150 130 M 150 70 L 100 120 M 200 70 L 150 150" stroke="#185f78" stroke-width="1" opacity="0.4"/>
-                        
-                        <path d="M 750 60 Q 650 90 550 70 L 600 150 Q 700 120 750 60 Z" stroke="#185f78" stroke-width="1.5" fill="none" opacity="0.4"/>
-                        <path d="M 750 60 L 600 150 M 700 80 L 650 130 M 650 70 L 700 120 M 600 70 L 650 150" stroke="#185f78" stroke-width="1" opacity="0.4"/>
-
-                        <!-- CHAIRS -->
-                        <!-- Left Chair -->
-                        <path d="M 100 500 L 100 280 Q 100 240 130 240 L 160 240 Q 190 240 190 280 L 190 350 L 150 350 L 150 500 M 190 300 L 230 300 L 230 350 M 130 350 L 130 500" fill="#185f78" stroke="#ffffff" stroke-width="1.5"/>
-                        <!-- Right Chair -->
-                        <path d="M 700 500 L 700 280 Q 700 240 670 240 L 640 240 Q 610 240 610 280 L 610 350 L 650 350 L 650 500 M 610 300 L 570 300 L 570 350 M 670 350 L 670 500" fill="#185f78" stroke="#ffffff" stroke-width="1.5"/>
-
-                        <!-- TABLE & CLOTH -->
-                        <!-- Table base -->
-                        <rect x="220" y="360" width="360" height="140" fill="#185f78"/>
-                        <!-- Tablecloth drape -->
-                        <path d="M 180 360 Q 400 380 620 360 L 650 450 L 150 450 Z" fill="#185f78"/>
-                        <!-- Tablecloth checkered pattern (White lines) -->
-                        <path d="M 200 370 L 180 450 M 250 375 L 240 450 M 300 378 L 300 450 M 350 379 L 360 450 M 400 380 L 420 450 M 450 379 L 480 450 M 500 378 L 540 450 M 550 375 L 600 450 M 600 370 L 650 450" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
-                        <path d="M 180 390 L 620 390 M 170 410 L 630 410 M 160 430 L 640 430" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
-
-                        <!-- TABLEWARE (Plates, Food, Glasses) -->
-                        <!-- Left Plate -->
-                        <ellipse cx="280" cy="360" rx="40" ry="10" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
-                        <path d="M 260 360 Q 280 350 300 360 Q 280 370 260 360 Z" fill="#185f78"/> <!-- Fish shape -->
-                        <!-- Right Plate -->
-                        <ellipse cx="520" cy="360" rx="40" ry="10" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
-                        <path d="M 500 360 Q 520 350 540 360 Q 520 370 500 360 Z" fill="#185f78"/> <!-- Fish shape -->
-                        
-                        <!-- Center Bottle -->
-                        <path d="M 390 360 L 390 310 Q 390 300 395 290 L 395 280 L 405 280 L 405 290 Q 410 300 410 310 L 410 360 Z" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
-                        <path d="M 390 320 L 410 320 M 390 330 L 410 330" stroke="#185f78" stroke-width="1.5"/>
-                        <!-- Center Plate -->
-                        <ellipse cx="400" cy="365" rx="35" ry="8" fill="#ffffff" stroke="#185f78" stroke-width="1.5"/>
-
-                        <!-- PEOPLE -->
-                        <!-- LEFT FIGURE (Woman) -->
-                        <g>
-                            <!-- Body & Dress -->
-                            <path d="M 230 360 Q 250 250 280 230 Q 300 240 310 280 Q 320 330 330 360 Z" fill="#185f78"/>
-                            <!-- Head & Hair -->
-                            <circle cx="280" cy="200" r="25" fill="#185f78"/>
-                            <circle cx="265" cy="175" r="15" fill="#185f78"/> <!-- Hair bun -->
-                            <path d="M 255 200 Q 270 190 285 200 Q 285 220 275 225 L 260 225 Z" fill="#185f78"/> <!-- Face profile -->
-                            <!-- Earring -->
-                            <circle cx="275" cy="215" r="2" fill="#ffffff"/>
-                            <!-- Dress details (White cutouts) -->
-                            <path d="M 270 230 Q 280 250 290 230" stroke="#ffffff" stroke-width="2" fill="none"/>
-                            
-                            <!-- Animated Arm & Glass -->
-                            <g class="arm-left">
-                                <!-- Arm -->
-                                <path d="M 290 260 Q 350 280 380 200" stroke="#185f78" stroke-width="14" stroke-linecap="round" fill="none"/>
-                                <!-- Hand -->
-                                <circle cx="380" cy="200" r="5" fill="#185f78"/>
-                                <!-- Glass -->
-                                <path d="M 380 200 L 380 160 M 365 160 L 395 160 L 380 180 Z" fill="#ffffff" stroke="#185f78" stroke-width="2"/>
-                                <!-- Wine -->
-                                <path d="M 370 165 L 390 165 L 380 180 Z" fill="#185f78"/>
-                            </g>
-                        </g>
-
-                        <!-- RIGHT FIGURE (Man) -->
-                        <g>
-                            <!-- Body & Suit -->
-                            <path d="M 570 360 Q 550 250 520 230 Q 500 240 490 280 Q 480 330 470 360 Z" fill="#185f78"/>
-                            <!-- Head & Hair -->
-                            <circle cx="520" cy="200" r="25" fill="#185f78"/>
-                            <path d="M 505 180 Q 520 170 535 185 L 540 205 Q 525 195 505 210 Z" fill="#185f78"/> <!-- Hair/Profile -->
-                            <!-- Suit details (White tie & lapels) -->
-                            <path d="M 510 220 L 520 260 L 530 220 Z" fill="#ffffff" opacity="0.8"/>
-                            <path d="M 520 260 L 500 360 M 520 260 L 540 360" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
-                            
-                            <!-- Animated Arm & Glass -->
-                            <g class="arm-right">
-                                <!-- Arm -->
-                                <path d="M 510 260 Q 450 280 420 200" stroke="#185f78" stroke-width="14" stroke-linecap="round" fill="none"/>
-                                <!-- Hand -->
-                                <circle cx="420" cy="200" r="5" fill="#185f78"/>
-                                <!-- Glass -->
-                                <path d="M 420 200 L 420 160 M 405 160 L 435 160 L 420 180 Z" fill="#ffffff" stroke="#185f78" stroke-width="2"/>
-                                <!-- Wine -->
-                                <path d="M 410 165 L 430 165 L 420 180 Z" fill="#185f78"/>
-                            </g>
-                        </g>
-
-                        <!-- SPARKLE EFFECT AT CONTACT -->
-                        <g class="sparkle">
-                            <circle cx="400" cy="170" r="18" stroke="#185f78" stroke-width="2" fill="none"/>
-                            <line x1="400" y1="135" x2="400" y2="150" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="400" y1="190" x2="400" y2="205" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="365" y1="170" x2="380" y2="170" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="420" y1="170" x2="435" y2="170" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="375" y1="145" x2="385" y2="155" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="425" y1="145" x2="415" y2="155" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="375" y1="195" x2="385" y2="185" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="425" y1="195" x2="415" y2="185" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                        </g>
-                    </svg>
-                </div>
+                <!-- Typewriter Titles -->
+                <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter"></h1>
+                
+                <p id="type-sub" class="text-brand-800/80 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap"></p>
+                
             </div>
 
-            <!-- Scroll cue -->
-            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-cue">
-                <span class="block w-px h-10 bg-gradient-to-b from-transparent via-brand-900/30 to-transparent"></span>
+            <!-- Elegant Minimal Scroll Indicator -->
+            <div id="scroll-indicator" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-300">
+                <span class="text-[10px] tracking-[0.3em] uppercase text-brand-900/50 font-medium">Scroll</span>
+                <div class="w-px h-12 bg-brand-900/20 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1/2 bg-brand-900 animate-scroll-dot"></div>
+                </div>
             </div>
         </section>
 
         <!-- ─────────────────────────── ABOUT ────────────────────────── -->
-        <section id="about" class="py-24 sm:py-32 bg-white">
+        <section id="about" class="py-24 sm:py-32 bg-white relative z-20">
             <div class="max-w-5xl mx-auto px-5 sm:px-8">
                 <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
 
@@ -516,15 +367,52 @@
 
     <!-- ─────────────────────────── SCRIPTS ─────────────────────────── -->
     <script>
+        // ── Typewriter Logic ──
+        const titleEl = document.getElementById('type-title');
+        const subEl = document.getElementById('type-sub');
+        const textTitle = "Ψαροταβέρνα\nΚυκλάδες";
+        const textSub = "Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.";
+
+        let i = 0;
+        let j = 0;
+        const speedTitle = 80; 
+        const speedSub = 25;
+
+        function typeWriter() {
+            if (i < textTitle.length) {
+                titleEl.textContent += textTitle.charAt(i);
+                i++;
+                setTimeout(typeWriter, speedTitle);
+            } else {
+                titleEl.classList.remove('cursor-typewriter');
+                subEl.classList.add('cursor-typewriter');
+                setTimeout(typeSub, 300);
+            }
+        }
+
+        function typeSub() {
+            if (j < textSub.length) {
+                subEl.textContent += textSub.charAt(j);
+                j++;
+                setTimeout(typeSub, speedSub);
+            } else {
+                subEl.classList.remove('cursor-typewriter');
+            }
+        }
+
+        // ── Init ──
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.classList.add('hidden');
+                // Start typing after loader fades
+                setTimeout(typeWriter, 800);
             }, 2000);
         });
 
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
+        // ── Mobile Menu ──
         const btn       = document.getElementById('mobile-menu-btn');
         const menu      = document.getElementById('mobile-menu');
         const iconOpen  = document.getElementById('icon-open');
@@ -544,11 +432,13 @@
             });
         });
 
+        // ── Header Shadow ──
         const header = document.getElementById('site-header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 8);
         }, { passive: true });
 
+        // ── Reveal on scroll ──
         const io = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -560,7 +450,35 @@
 
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-        /* SLIDESHOW LOGIC */
+        // ── Smooth Blur & Fade on Scroll ──
+        const heroContent = document.getElementById('hero-content');
+        const scrollIndicator = document.getElementById('scroll-indicator');
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    
+                    // Blur effect: applies only when scrolling down the first section
+                    if (scrollY < window.innerHeight) {
+                        const blurAmount = Math.min(scrollY / 30, 12); // Max 12px blur
+                        const opacityAmount = Math.max(1 - (scrollY / 500), 0); // Fades out
+                        
+                        // Apply to text content
+                        heroContent.style.filter = `blur(${blurAmount}px)`;
+                        heroContent.style.opacity = opacityAmount;
+                        
+                        // Fade out scroll indicator faster
+                        scrollIndicator.style.opacity = Math.max(1 - (scrollY / 200), 0);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // ── Slideshow ──
         const slides = document.querySelectorAll('.slide-img');
         const dotsContainer = document.getElementById('slider-dots');
         let currentSlide = 0;
