@@ -19,7 +19,7 @@
                     colors: {
                         brand: {
                             950: '#0e3e50',
-                            900: '#185f78', 
+                            900: '#185f78', // Χρώμα λογότυπου
                             800: '#1d708d', 
                             700: '#2587a8',
                             100: '#e5f0f4'
@@ -101,11 +101,6 @@
         .reveal.is-visible .hairline { transform: scaleX(1); }
 
         /* ── Hero Animations ──────────────────────────────── */
-        .hero-bg-img {
-            will-change: transform;
-            transform: translateY(0) scale(1.05); 
-        }
-
         @keyframes smoothFadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -113,14 +108,47 @@
         
         .hero-title {
             opacity: 0;
-            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
             will-change: transform, opacity;
         }
         
         .hero-subtitle {
             opacity: 0;
-            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s forwards;
+            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
             will-change: transform, opacity;
+        }
+
+        .hero-svg {
+            opacity: 0;
+            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards;
+        }
+
+        /* ── SVG Animation (Toasting) ─────────────────────── */
+        .arm-left {
+            transform-origin: 230px 210px;
+            animation: clinkLeft 5s ease-in-out infinite;
+        }
+        .arm-right {
+            transform-origin: 370px 210px;
+            animation: clinkRight 5s ease-in-out infinite;
+        }
+        .sparkles {
+            transform-origin: 300px 100px;
+            animation: sparkle 5s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes clinkLeft {
+            0%, 15%, 100% { transform: rotate(0deg); }
+            25%, 35% { transform: rotate(6deg); }
+        }
+        @keyframes clinkRight {
+            0%, 15%, 100% { transform: rotate(0deg); }
+            25%, 35% { transform: rotate(-6deg); }
+        }
+        @keyframes sparkle {
+            0%, 20%, 40%, 100% { opacity: 0; transform: scale(0.8); }
+            25%, 35% { opacity: 1; transform: scale(1.1); }
         }
 
         /* ── Underline link ───────────────────────────────── */
@@ -205,27 +233,80 @@
     <main>
 
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
-        <section id="top" class="relative min-h-[85vh] flex items-center justify-center bg-black overflow-hidden">
+        <!-- Λευκό φόντο, κείμενο και SVG στο χρώμα του brand -->
+        <section id="top" class="relative min-h-[85vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
-            <div id="hero-parallax" class="hero-bg-img absolute inset-0 bg-cover bg-center"
-                 style="background-image:url('kiklades1.jpg'); filter: contrast(1.05) saturate(1.1) brightness(0.95);"></div>
-            
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-
-            <div class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col justify-end h-[85vh] pb-16 text-center">
+            <div class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center">
                 
-                <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-wide mb-3 drop-shadow-lg">
+                <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.1] tracking-wide mb-4">
                     Ψαροταβέρνα<br>
-                    <span class="text-sand-200">Κυκλάδες</span>
+                    <span class="text-brand-700">Κυκλάδες</span>
                 </h1>
 
-                <p class="hero-subtitle text-white/90 text-xs sm:text-sm font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+                <p class="hero-subtitle text-brand-800/80 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto mb-6">
                     Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.
                 </p>
+
+                <!-- SVG Animation: Άντρας και Γυναίκα τσουγκρίζουν τα ποτήρια -->
+                <div class="hero-svg w-full max-w-xl mx-auto mt-4">
+                    <svg viewBox="0 0 600 300" class="w-full h-auto drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <!-- Τραπέζι -->
+                        <line x1="100" y1="260" x2="500" y2="260" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                        <!-- Πιάτο -->
+                        <ellipse cx="300" cy="260" rx="40" ry="8" fill="none" stroke="#185f78" stroke-width="1" opacity="0.4"/>
+
+                        <!-- ΑΝΤΡΑΣ (Αριστερά) -->
+                        <g>
+                            <!-- Κεφάλι -->
+                            <circle cx="230" cy="160" r="22" stroke="#185f78" stroke-width="2"/>
+                            <!-- Σώμα -->
+                            <path d="M 190 260 Q 210 200 230 200 Q 250 200 270 260" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <!-- Χέρι -->
+                            <g class="arm-left">
+                                <path d="M 230 210 L 270 150 L 280 130" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                                <!-- Ποτήρι -->
+                                <path d="M 280 130 L 280 100 M 270 100 L 290 100 M 270 100 Q 280 120 290 100" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                                <!-- Κρασί -->
+                                <path d="M 273 105 Q 280 115 287 105 Z" fill="#185f78" opacity="0.3"/>
+                            </g>
+                        </g>
+
+                        <!-- ΓΥΝΑΙΚΑ (Δεξιά) -->
+                        <g>
+                            <!-- Κεφάλι -->
+                            <circle cx="370" cy="160" r="22" stroke="#185f78" stroke-width="2"/>
+                            <!-- Μαλλιά -->
+                            <path d="M 348 160 Q 340 190 350 220" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M 392 160 Q 400 190 390 220" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <!-- Σώμα -->
+                            <path d="M 330 260 Q 350 200 370 200 Q 390 200 410 260" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <!-- Χέρι -->
+                            <g class="arm-right">
+                                <path d="M 370 210 L 330 150 L 320 130" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                                <!-- Ποτήρι -->
+                                <path d="M 320 130 L 320 100 M 310 100 L 330 100 M 310 100 Q 320 120 330 100" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                                <!-- Κρασί -->
+                                <path d="M 313 105 Q 320 115 327 105 Z" fill="#185f78" opacity="0.3"/>
+                            </g>
+                        </g>
+
+                        <!-- ΕΦΕ ΤΣΟΥΓΚΡΙΣΜΑΤΟΣ (Λάμψεις) -->
+                        <g class="sparkles">
+                            <line x1="300" y1="90" x2="300" y2="75" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="285" y1="95" x2="275" y2="85" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="315" y1="95" x2="325" y2="85" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="290" y1="105" x2="280" y2="100" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="310" y1="105" x2="320" y2="100" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                        </g>
+
+                    </svg>
+                </div>
             </div>
 
+            <!-- Scroll cue (προσαρμοσμένο για λευκό φόντο) -->
             <div class="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-cue">
-                <span class="block w-px h-10 bg-gradient-to-b from-transparent via-white/50 to-transparent"></span>
+                <span class="block w-px h-10 bg-gradient-to-b from-transparent via-brand-900/30 to-transparent"></span>
             </div>
         </section>
 
@@ -260,8 +341,6 @@
                     <!-- SLIDESHOW -->
                     <div class="md:col-span-5 reveal reveal-d2">
                         <div class="relative w-full h-[26rem] overflow-hidden bg-sand-200 group">
-                            <!-- Όλες οι εικόνες είναι stacked η μία πάνω στην άλλη. 
-                                 Η κλάση 'slide-img' ελέγχει την ορατότητα με opacity. -->
                             <img src="kiklades5.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 1">
                             <img src="kiklades2.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 2">
                             <img src="kiklades3.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 3">
@@ -271,12 +350,7 @@
                             <img src="kiklades6.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 7">
                             <img src="kiklades8.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 8">
                             
-                            <!-- Minimal dots indicator -->
-                            <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                                <!-- Τα dots δημιουργούνται με JS -->
-                            </div>
-                            
-                            <!-- Σκούρο gradient στο κάτω μέρος για να φαίνονται τα dots -->
+                            <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"></div>
                             <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                         </div>
                     </div>
@@ -433,29 +507,12 @@
 
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-        /* Hero Parallax */
-        const heroBg = document.getElementById('hero-parallax');
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    if (scrollY <= window.innerHeight) {
-                        heroBg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.05)`;
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-
-        /* ── SLIDESHOW LOGIC ── */
+        /* SLIDESHOW LOGIC */
         const slides = document.querySelectorAll('.slide-img');
         const dotsContainer = document.getElementById('slider-dots');
         let currentSlide = 0;
-        const slideInterval = 5000; // Αλλαγή κάθε 5 δευτερόλεπτα
+        const slideInterval = 5000;
 
-        // Δημιουργία dots
         slides.forEach((_, index) => {
             const dot = document.createElement('div');
             dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === 0 ? 'bg-white scale-125' : 'bg-white/50'}`;
@@ -465,21 +522,17 @@
         const dots = dotsContainer.querySelectorAll('div');
 
         function nextSlide() {
-            // Αφαίρεση ενεργού κλάσης από το τρέχον
             slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
             dots[currentSlide].classList.replace('bg-white', 'bg-white/50');
             dots[currentSlide].classList.remove('scale-125');
 
-            // Εύρεση επόμενου
             currentSlide = (currentSlide + 1) % slides.length;
 
-            // Ενεργοποίηση επόμενου
             slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
             dots[currentSlide].classList.replace('bg-white/50', 'bg-white');
             dots[currentSlide].classList.add('scale-125');
         }
 
-        // Έναρξη του interval
         setInterval(nextSlide, slideInterval);
     </script>
 </body>
