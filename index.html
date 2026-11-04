@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ψαροταβέρνα Κυκλάδες — Σίνδος, Θεσσαλονίκη</title>
 
+    <!-- Favicon: Ψάρι με ραχοκοκαλιά στο μπλε του σάιτ -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M 15 50 Q 30 20 60 50 Q 30 80 15 50 Z' fill='%23185f78'/%3E%3Cpath d='M 60 50 L 85 30 L 85 70 Z' fill='%23185f78'/%3E%3Ccircle cx='35' cy='45' r='2' fill='white'/%3E%3Cpath d='M 30 50 L 45 50 M 40 45 L 40 55 M 50 50 L 65 50 M 60 45 L 60 55 M 70 50 L 80 50' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
     <!-- Fonts: Ubuntu everywhere (Greek & Latin) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,17 +114,6 @@
             50% { opacity: 0; }
         }
 
-        /* ── Smooth Zoom Animation (Ken Burns) ────────────── */
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        .animate-slow-zoom {
-            animation: slowZoom 25s ease-in-out infinite;
-            will-change: transform;
-        }
-
         /* ── Elegant Scroll Indicator ─────────────────────── */
         @keyframes scrollDot {
             0% { transform: translateY(-100%); }
@@ -217,10 +209,9 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
-            <!-- Background Image με Zoom Effect και το θόλωμα που είχε πριν -->
+            <!-- Background Image (χωρίς zoom animation) -->
             <div class="absolute inset-0 z-0 overflow-hidden">
-                <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[8px] opacity-40 animate-slow-zoom">
-                <!-- Το λευκό overlay που υπήρχε και πριν -->
+                <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[8px] opacity-40">
                 <div class="absolute inset-0 bg-white/60"></div>
             </div>
 
