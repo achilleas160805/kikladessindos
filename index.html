@@ -100,10 +100,10 @@
         }
         .reveal.is-visible .hairline { transform: scaleX(1); }
 
-        /* ── Hero Animations (Smooth & Light) ─────────────── */
+        /* ── Hero Animations ──────────────────────────────── */
         .hero-bg-img {
             will-change: transform;
-            transform: translateY(0) scale(1.05); /* Λίγο zoom για να μην φαίνονται κενά κατά το scroll */
+            transform: translateY(0) scale(1.05); 
         }
 
         @keyframes smoothFadeUp {
@@ -143,10 +143,6 @@
         #site-header { transition: box-shadow .45s ease; }
         #site-header.scrolled { box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); }
 
-        /* ── Image micro-zoom ─────────────────────────────── */
-        .img-zoom img { transition: transform 1.4s cubic-bezier(.16,1,.3,1); }
-        .img-zoom:hover img { transform: scale(1.045); }
-
         /* ── Scroll cue ───────────────────────────────────── */
         @keyframes scrollCue {
             0%   { transform: translateY(0);   opacity:0; }
@@ -177,6 +173,7 @@
             <!-- Desktop nav -->
             <nav class="hidden md:flex items-center gap-9 text-[13px] tracking-wide text-white/80">
                 <a href="#about"   class="u-link hover:text-white transition-colors">Ταυτότητα</a>
+                <a href="#menu"    class="u-link hover:text-white transition-colors">Menu</a>
                 <a href="#contact" class="u-link hover:text-white transition-colors">Επικοινωνία</a>
             </nav>
 
@@ -199,6 +196,7 @@
         <!-- Mobile dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-900 border-t border-white/10 px-6 py-6 space-y-5">
             <a href="#about"   class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Ταυτότητα</a>
+            <a href="#menu"    class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Menu</a>
             <a href="#contact" class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Επικοινωνία</a>
             <a href="tel:+302310797997" class="block pt-3 text-[13px] tracking-wider font-medium text-white u-link">231 079 7997</a>
         </div>
@@ -209,14 +207,11 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[85vh] flex items-center justify-center bg-black overflow-hidden">
             
-            <!-- Εικόνα με Parallax -->
             <div id="hero-parallax" class="hero-bg-img absolute inset-0 bg-cover bg-center"
                  style="background-image:url('kiklades1.jpg'); filter: contrast(1.05) saturate(1.1) brightness(0.95);"></div>
             
-            <!-- Gradient για ευανάγνωστο κείμενο -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
 
-            <!-- Κείμενο -->
             <div class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col justify-end h-[85vh] pb-16 text-center">
                 
                 <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-wide mb-3 drop-shadow-lg">
@@ -229,7 +224,6 @@
                 </p>
             </div>
 
-            <!-- Scroll cue -->
             <div class="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-cue">
                 <span class="block w-px h-10 bg-gradient-to-b from-transparent via-white/50 to-transparent"></span>
             </div>
@@ -263,15 +257,47 @@
                         </p>
                     </div>
 
+                    <!-- SLIDESHOW -->
                     <div class="md:col-span-5 reveal reveal-d2">
-                        <div class="img-zoom overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80"
-                                 alt="Εσωτερικό Ψαροταβέρνας Κυκλάδες"
-                                 class="w-full h-[26rem] object-cover" loading="lazy">
+                        <div class="relative w-full h-[26rem] overflow-hidden bg-sand-200 group">
+                            <!-- Όλες οι εικόνες είναι stacked η μία πάνω στην άλλη. 
+                                 Η κλάση 'slide-img' ελέγχει την ορατότητα με opacity. -->
+                            <img src="kiklades5.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 1">
+                            <img src="kiklades2.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 2">
+                            <img src="kiklades3.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 3">
+                            <img src="kiklades9.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 4">
+                            <img src="kiklades2.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 5">
+                            <img src="kiklades7.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 6">
+                            <img src="kiklades6.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 7">
+                            <img src="kiklades8.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 8">
+                            
+                            <!-- Minimal dots indicator -->
+                            <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                <!-- Τα dots δημιουργούνται με JS -->
+                            </div>
+                            
+                            <!-- Σκούρο gradient στο κάτω μέρος για να φαίνονται τα dots -->
+                            <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                         </div>
                     </div>
 
                 </div>
+            </div>
+        </section>
+
+        <!-- ─────────────────────────── MENU ─────────────────────────── -->
+        <section id="menu" class="py-24 sm:py-32 bg-sand-50 border-t border-b border-sand-200">
+            <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
+                <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-700 mb-6">
+                    Γεύσεις
+                </p>
+                <h2 class="reveal reveal-d1 text-4xl sm:text-5xl font-bold text-brand-950 leading-[1.08] tracking-tight mb-8">
+                    Το Μενού μας
+                </h2>
+                <p class="reveal reveal-d2 text-slateDark/70 text-base sm:text-lg leading-relaxed font-light max-w-xl mx-auto">
+                    Ετοιμάζουμε με ιδιαίτερη φροντίδα τις νέες μας προτάσεις. <br class="hidden sm:block">
+                    <strong class="font-medium text-brand-950">Το μενού θα ενημερωθεί σύντομα.</strong>
+                </p>
             </div>
         </section>
 
@@ -291,7 +317,6 @@
 
                 <div class="grid lg:grid-cols-2 gap-14 lg:gap-16 items-start">
 
-                    <!-- LEFT: contact info -->
                     <div class="space-y-11">
                         
                         <div class="reveal">
@@ -315,7 +340,6 @@
                         </div>
 
                         <div class="reveal reveal-d3 pt-4">
-                            <!-- Κουμπί Facebook -->
                             <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
                                target="_blank" rel="noopener noreferrer"
                                class="inline-flex items-center gap-2.5 px-6 py-3 bg-white text-brand-950 rounded text-[13px] font-medium tracking-wide hover:bg-sand-100 transition-colors">
@@ -325,10 +349,8 @@
                                 Facebook
                             </a>
                         </div>
-
                     </div>
 
-                    <!-- RIGHT: map -->
                     <div class="reveal reveal-d1">
                         <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/30">
                             <iframe
@@ -411,15 +433,13 @@
 
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-        /* Smooth Parallax Effect στο Hero */
+        /* Hero Parallax */
         const heroBg = document.getElementById('hero-parallax');
         let ticking = false;
-
         window.addEventListener('scroll', () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
                     const scrollY = window.scrollY;
-                    // Κινεί την εικόνα προς τα κάτω όσο κάνουμε scroll (πιο αργά από την σελίδα)
                     if (scrollY <= window.innerHeight) {
                         heroBg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.05)`;
                     }
@@ -428,6 +448,39 @@
                 ticking = true;
             }
         }, { passive: true });
+
+        /* ── SLIDESHOW LOGIC ── */
+        const slides = document.querySelectorAll('.slide-img');
+        const dotsContainer = document.getElementById('slider-dots');
+        let currentSlide = 0;
+        const slideInterval = 5000; // Αλλαγή κάθε 5 δευτερόλεπτα
+
+        // Δημιουργία dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 ${index === 0 ? 'bg-white scale-125' : 'bg-white/50'}`;
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = dotsContainer.querySelectorAll('div');
+
+        function nextSlide() {
+            // Αφαίρεση ενεργού κλάσης από το τρέχον
+            slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
+            dots[currentSlide].classList.replace('bg-white', 'bg-white/50');
+            dots[currentSlide].classList.remove('scale-125');
+
+            // Εύρεση επόμενου
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            // Ενεργοποίηση επόμενου
+            slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
+            dots[currentSlide].classList.replace('bg-white/50', 'bg-white');
+            dots[currentSlide].classList.add('scale-125');
+        }
+
+        // Έναρξη του interval
+        setInterval(nextSlide, slideInterval);
     </script>
 </body>
 </html>
