@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ψαροταβέρνα Κυκλάδες — Σίνδος, Θεσσαλονίκη</title>
 
-    <!-- Favicon: Ψάρι με ραχοκοκαλιά στο μπλε του σάιτ -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M 15 50 Q 30 20 60 50 Q 30 80 15 50 Z' fill='%23185f78'/%3E%3Cpath d='M 60 50 L 85 30 L 85 70 Z' fill='%23185f78'/%3E%3Ccircle cx='35' cy='45' r='2' fill='white'/%3E%3Cpath d='M 30 50 L 45 50 M 40 45 L 40 55 M 50 50 L 65 50 M 60 45 L 60 55 M 70 50 L 80 50' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
-    <!-- Fonts: Ubuntu everywhere (Greek & Latin) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
@@ -22,12 +22,13 @@
                     colors: {
                         brand: {
                             950: '#0e3e50',
-                            900: '#185f78', // Χρώμα λογότυπου
+                            900: '#185f78',
                             800: '#1d708d', 
                             700: '#2587a8',
                             100: '#e5f0f4'
                         },
                         sand:   { 50:'#fbfbfa', 100:'#f5f4f0', 200:'#e8e6df', 300:'#d7d4c9' },
+                        gold:   { 500: '#c5a059', 600: '#b08d4a' },
                         slateDark: '#1e2633'
                     },
                     fontFamily: {
@@ -39,8 +40,11 @@
     </script>
 
     <style>
-        /* ── Base ─────────────────────────────────────────── */
-        html { -webkit-font-smoothing: antialiased; }
+        /* ── Base & Smooth Scroll ─────────────────────────── */
+        html { 
+            -webkit-font-smoothing: antialiased; 
+            scroll-behavior: smooth;
+        }
         body { font-family:'Ubuntu',sans-serif; background:#ffffff; color:#1e2633; overflow-x: hidden; }
         section[id] { scroll-margin-top: 84px; }
 
@@ -55,102 +59,101 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
-        #loader.hidden {
-            opacity: 0; visibility: hidden;
-        }
+        #loader.hidden { opacity: 0; visibility: hidden; }
         .loader-logo {
             width: 380px; max-width: 85vw; height: auto; 
             opacity: 0; transform: translateY(15px);
             animation: fadeInLogo 1s ease forwards;
             object-fit: contain;
         }
-        @keyframes fadeInLogo {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInLogo { to { opacity: 1; transform: translateY(0); } }
         .loader-bar {
-            margin-top: 40px;
-            width: 160px; height: 2px;
-            background: rgba(255,255,255,0.2);
-            position: relative; overflow: hidden;
+            margin-top: 40px; width: 160px; height: 2px;
+            background: rgba(255,255,255,0.2); position: relative; overflow: hidden;
         }
         .loader-bar::after {
             content: ''; position: absolute; top: 0; left: 0; height: 100%;
             width: 40%; background: #ffffff;
             animation: loadBar 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
-        @keyframes loadBar {
-            0% { left: -40%; }
-            100% { left: 100%; }
+        @keyframes loadBar { 0% { left: -40%; } 100% { left: 100%; } }
+
+        /* ── Premium Text Masking Reveal ──────────────────── */
+        .reveal-text {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            transform: translateY(20px);
+            transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: clip-path, transform;
+        }
+        .reveal.is-visible .reveal-text, .reveal-text.is-visible {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transform: translateY(0);
         }
 
-        /* ── Reveal on scroll ─────────────────────────────── */
-        .reveal {
-            opacity:0;
-            transform: translateY(36px);
-            transition: opacity 1s cubic-bezier(.16,1,.3,1),
-                        transform 1s cubic-bezier(.16,1,.3,1);
+        /* ── Staggered Cards ──────────────────────────────── */
+        .reveal-card {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
-        .reveal.is-visible { opacity:1; transform:none; }
-        .reveal-d1 { transition-delay:.12s; }
-        .reveal-d2 { transition-delay:.24s; }
-        .reveal-d3 { transition-delay:.36s; }
-        .reveal-d4 { transition-delay:.48s; }
-
+        .reveal.is-visible .reveal-card, .reveal-card.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        /* ── Elegant Hairline ─────────────────────────────── */
         .hairline {
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 1.2s cubic-bezier(.16,1,.3,1) .25s;
+            transition: transform 1.4s cubic-bezier(.16,1,.3,1) .3s;
         }
         .reveal.is-visible .hairline { transform: scaleX(1); }
 
         /* ── Typewriter Cursor ────────────────────────────── */
         .cursor-typewriter::after {
-            content: '|';
-            margin-left: 4px;
-            font-weight: 300;
+            content: '|'; margin-left: 4px; font-weight: 300;
             animation: blink 1s step-end infinite;
         }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
 
-        /* ── Elegant Scroll Indicator ─────────────────────── */
+        /* ── Scroll Indicator ─────────────────────────────── */
         @keyframes scrollDot {
             0% { transform: translateY(-100%); }
             100% { transform: translateY(200%); }
         }
-        .animate-scroll-dot {
-            animation: scrollDot 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
+        .animate-scroll-dot { animation: scrollDot 2s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
 
-        /* ── Underline link ───────────────────────────────── */
+        /* ── Underline Link ───────────────────────────────── */
         .u-link { position: relative; display: inline-block; }
         .u-link::after {
-            content:'';
-            position:absolute; left:0; bottom:-3px;
-            width:100%; height:1px;
-            background: currentColor;
-            transform: scaleX(0);
-            transform-origin: right;
+            content: ''; position: absolute; left: 0; bottom: -3px; width: 100%; height: 1px;
+            background: currentColor; transform: scaleX(0); transform-origin: right;
             transition: transform .5s cubic-bezier(.16,1,.3,1);
         }
-        .u-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
+        .u-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
-        /* ── Header shadow ────────────────────────────────── */
-        #site-header { transition: box-shadow .45s ease; }
-        #site-header.scrolled { box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); }
+        /* ── Header Shadow ────────────────────────────────── */
+        #site-header { transition: box-shadow .45s ease, background-color .45s ease; }
+        #site-header.scrolled { box-shadow: 0 4px 30px -10px rgba(0,0,0,.2); background-color: rgba(24, 95, 120, 0.98); backdrop-filter: blur(10px); }
 
         /* ── Map Blur Effect ──────────────────────────────── */
         .map-blur {
             filter: grayscale(100%) blur(3px) opacity(0.6) sepia(100%) hue-rotate(170deg) saturate(300%) contrast(90%);
-            transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s ease;
+            transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease;
         }
         .map-blur:hover {
             filter: grayscale(0%) blur(0px) opacity(1) sepia(0%) hue-rotate(0deg) saturate(100%) contrast(100%);
             transform: scale(1.02);
+        }
+
+        /* ── Premium Button Hover ─────────────────────────── */
+        .btn-premium {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-premium:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(24, 95, 120, 0.4);
         }
     </style>
 </head>
@@ -164,28 +167,24 @@
     </div>
 
     <!-- ─────────────────────────── HEADER ──────────────────────────── -->
-    <header id="site-header" class="sticky top-0 z-50 bg-brand-900">
+    <header id="site-header" class="sticky top-0 z-50 bg-brand-900/95 backdrop-blur-sm">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[84px] flex items-center justify-between">
 
-            <!-- Brand -->
             <a href="#top" class="flex items-center h-full group">
-                <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="h-full w-auto object-cover object-left transition-transform group-hover:scale-[1.02]">
+                <img src="kikladeslogo.jpg" alt="Ψαροταβέρνα Κυκλάδες" class="h-full w-auto object-cover object-left transition-transform duration-500 group-hover:scale-[1.03]">
             </a>
 
-            <!-- Desktop nav -->
             <nav class="hidden md:flex items-center gap-9 text-[13px] tracking-wide text-white/80">
-                <a href="#about"   class="u-link hover:text-white transition-colors">Ταυτότητα</a>
-                <a href="#menu"    class="u-link hover:text-white transition-colors">Menu</a>
-                <a href="#reviews" class="u-link hover:text-white transition-colors">Αξιολογήσεις</a>
-                <a href="#contact" class="u-link hover:text-white transition-colors">Επικοινωνία</a>
+                <a href="#about"   class="u-link hover:text-white transition-colors duration-300">Ταυτότητα</a>
+                <a href="#menu"    class="u-link hover:text-white transition-colors duration-300">Menu</a>
+                <a href="#reviews" class="u-link hover:text-white transition-colors duration-300">Αξιολογήσεις</a>
+                <a href="#contact" class="u-link hover:text-white transition-colors duration-300">Επικοινωνία</a>
             </nav>
 
-            <!-- Desktop phone -->
-            <a href="tel:+302310797997" class="hidden sm:inline-block u-link text-[13px] tracking-wider font-medium text-white">
+            <a href="tel:+302310797997" class="hidden sm:inline-block u-link text-[13px] tracking-wider font-medium text-white hover:text-brand-100 transition-colors duration-300">
                 231 079 7997
             </a>
 
-            <!-- Mobile toggle -->
             <button id="mobile-menu-btn" aria-label="Μενού" class="md:hidden p-2 text-white hover:text-white/80 focus:outline-none transition-colors">
                 <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M4 7h16M4 12h16M4 17h16"/>
@@ -196,7 +195,6 @@
             </button>
         </div>
 
-        <!-- Mobile dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-900 border-t border-white/10 px-6 py-6 space-y-5">
             <a href="#about"   class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Ταυτότητα</a>
             <a href="#menu"    class="block text-[13px] tracking-wide text-white/80 hover:text-white transition-colors">Menu</a>
@@ -211,23 +209,16 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
-            <!-- Background Image -->
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[8px] opacity-40">
                 <div class="absolute inset-0 bg-white/60"></div>
             </div>
 
-            <!-- Blur & Fade Wrapper (για το scroll) -->
             <div id="hero-content" class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center transition-all duration-300">
-                
-                <!-- Typewriter Titles -->
                 <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter drop-shadow-sm"></h1>
-                
                 <p id="type-sub" class="text-brand-800 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap drop-shadow-sm"></p>
-                
             </div>
 
-            <!-- Elegant Minimal Scroll Indicator -->
             <div id="scroll-indicator" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-300 z-10">
                 <span class="text-[10px] tracking-[0.3em] uppercase text-brand-900/60 font-medium">Scroll</span>
                 <div class="w-px h-12 bg-brand-900/20 relative overflow-hidden">
@@ -242,42 +233,42 @@
                 <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
 
                     <div class="md:col-span-7">
-                        <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-700 mb-6">
-                            Η ταυτότητά μας
-                        </p>
+                        <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-700 mb-6">Η ταυτότητά μας</p>
 
-                        <h2 class="reveal reveal-d1 text-4xl sm:text-5xl font-bold text-brand-950 leading-[1.08] tracking-tight">
-                            Κυκλαδίτικος αέρας<br>
-                            <span class="font-light">στη Σίνδο</span>
+                        <!-- Premium text reveal for heading -->
+                        <h2 class="reveal text-4xl sm:text-5xl font-bold text-brand-950 leading-[1.1] tracking-tight mb-2">
+                            <span class="block reveal-text">Κυκλαδίτικος αέρας</span>
+                            <span class="block reveal-text text-brand-700 font-light">στη Σίνδο</span>
                         </h2>
 
-                        <div class="reveal reveal-d2 mt-9">
+                        <div class="reveal mt-9">
                             <div class="hairline w-16 h-[2px] bg-brand-700"></div>
                         </div>
 
-                        <p class="reveal reveal-d2 mt-9 text-slateDark/70 text-sm sm:text-[15px] leading-[1.95]">
-                            Στην οδό Χ. Ακριβού 7, η <strong class="font-medium text-brand-950">Ψαροταβέρνα Κυκλάδες</strong> προσφέρει έναν προσεγμένο χώρο εμπνευσμένο από τη λιτή κομψότητα του Αιγαίου.
-                        </p>
-
-                        <p class="reveal reveal-d3 mt-4 text-slateDark/70 text-sm sm:text-[15px] leading-[1.95]">
-                            Με σεβασμό στην πρώτη ύλη, θέλουμε να σερβίρουμε καθημερινά ό,τι καλύτερο βγάζει η θάλασσα: προσεγμένα ψησίματα στα κάρβουνα, ανάλαφρο παραδοσιακό τηγάνι, φρέσκες χειροποίητες σαλάτες και εκλεκτά αποστάγματα.
-                        </p>
+                        <div class="reveal">
+                            <p class="mt-9 text-slateDark/70 text-sm sm:text-[15px] leading-[1.95]">
+                                Στην οδό Χ. Ακριβού 7, η <strong class="font-medium text-brand-950">Ψαροταβέρνα Κυκλάδες</strong> προσφέρει έναν προσεγμένο χώρο εμπνευσμένο από τη λιτή κομψότητα του Αιγαίου.
+                            </p>
+                            <p class="mt-4 text-slateDark/70 text-sm sm:text-[15px] leading-[1.95]">
+                                Με σεβασμό στην πρώτη ύλη, θέλουμε να σερβίρουμε καθημερινά ό,τι καλύτερο βγάζει η θάλασσα: προσεγμένα ψησίματα στα κάρβουνα, ανάλαφρο παραδοσιακό τηγάνι, φρέσκες χειροποίητες σαλάτες και εκλεκτά αποστάγματα.
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- SLIDESHOW -->
-                    <div class="md:col-span-5 reveal reveal-d2">
-                        <div class="relative w-full h-[26rem] overflow-hidden bg-sand-200 group">
-                            <img src="kiklades5.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 1">
-                            <img src="kiklades2.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 2">
-                            <img src="kiklades3.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 3">
-                            <img src="kiklades9.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 4">
-                            <img src="kiklades2.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 5">
-                            <img src="kiklades7.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 6">
-                            <img src="kiklades6.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 7">
-                            <img src="kiklades8.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό Ψαροταβέρνας 8">
+                    <!-- Slideshow -->
+                    <div class="md:col-span-5 reveal">
+                        <div class="relative w-full h-[26rem] overflow-hidden bg-sand-200 group reveal-card shadow-xl shadow-brand-900/5">
+                            <img src="kiklades5.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 1">
+                            <img src="kiklades2.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 2">
+                            <img src="kiklades3.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 3">
+                            <img src="kiklades9.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 4">
+                            <img src="kiklades2.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 5">
+                            <img src="kiklades7.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 6">
+                            <img src="kiklades6.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 7">
+                            <img src="kiklades8.jpg" class="slide-img absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-[1500ms] ease-in-out" alt="Εσωτερικό 8">
                             
                             <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"></div>
-                            <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                            <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
                         </div>
                     </div>
 
@@ -288,16 +279,16 @@
         <!-- ─────────────────────────── MENU ─────────────────────────── -->
         <section id="menu" class="py-24 sm:py-32 bg-sand-50 border-t border-b border-sand-200">
             <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-                <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-700 mb-6">
-                    Γεύσεις
-                </p>
-                <h2 class="reveal reveal-d1 text-4xl sm:text-5xl font-bold text-brand-950 leading-[1.08] tracking-tight mb-8">
-                    Το Μενού μας
+                <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-700 mb-6">Γεύσεις</p>
+                <h2 class="reveal text-4xl sm:text-5xl font-bold text-brand-950 leading-[1.1] tracking-tight mb-8">
+                    <span class="block reveal-text">Το Μενού μας</span>
                 </h2>
-                <p class="reveal reveal-d2 text-slateDark/70 text-base sm:text-lg leading-relaxed font-light max-w-xl mx-auto">
-                    Επεξεργαζόμαστε τα διαθέσιμα πιάτα μας. <br class="hidden sm:block">
-                    <strong class="font-medium text-brand-950">Το μενού θα ενημερωθεί σύντομα.</strong>
-                </p>
+                <div class="reveal">
+                    <p class="text-slateDark/70 text-base sm:text-lg leading-relaxed font-light max-w-xl mx-auto">
+                        Επεξεργαζόμαστε τα διαθέσιμα πιάτα μας. <br class="hidden sm:block">
+                        <strong class="font-medium text-brand-950">Το μενού θα ενημερωθεί σύντομα.</strong>
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -307,16 +298,15 @@
                 
                 <div class="text-center mb-16 sm:mb-20">
                     <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-700">Εντυπώσεις</p>
-                    <h2 class="reveal reveal-d1 text-4xl sm:text-5xl font-bold text-brand-950 mt-4 tracking-tight">
-                        Αξιολογήσεις
+                    <h2 class="reveal text-4xl sm:text-5xl font-bold text-brand-950 mt-4 tracking-tight">
+                        <span class="block reveal-text">Αξιολογήσεις</span>
                     </h2>
                 </div>
 
-                <!-- Reviews Grid -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     <!-- Review 1 -->
-                    <div class="reveal bg-sand-50 p-8 rounded border border-sand-200 flex flex-col">
+                    <div class="reveal reveal-card bg-sand-50 p-8 rounded border border-sand-200 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-500">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-10 h-10 rounded-full bg-brand-900 flex items-center justify-center text-white font-bold text-sm">JK</div>
                             <div>
@@ -324,8 +314,12 @@
                                 <p class="text-[11px] text-slateDark/50">7 κριτικές</p>
                             </div>
                         </div>
-                        <div class="flex gap-1 text-ochre-500 mb-3 text-sm">
-                            ⭐⭐⭐⭐⭐
+                        <div class="flex gap-1 text-gold-500 mb-3">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         </div>
                         <p class="text-xs text-slateDark/70 leading-relaxed mb-4 flex-grow">
                             Εξαιρετική ψαροταβέρνα και πραγματικά μια από τις καλύτερες επιλογές στη Σίνδο. Το φαγητό ήταν φρέσκο και νόστιμο, το προσωπικό ευγενικό. Σίγουρα θα ξαναπάμε!
@@ -334,7 +328,7 @@
                     </div>
 
                     <!-- Review 2 -->
-                    <div class="reveal reveal-d1 bg-sand-50 p-8 rounded border border-sand-200 flex flex-col">
+                    <div class="reveal reveal-card bg-sand-50 p-8 rounded border border-sand-200 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-500" style="transition-delay: 100ms;">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-10 h-10 rounded-full bg-brand-900 flex items-center justify-center text-white font-bold text-sm">ΓΝ</div>
                             <div>
@@ -342,17 +336,21 @@
                                 <p class="text-[11px] text-slateDark/50">2 κριτικές · 1 φωτογραφία</p>
                             </div>
                         </div>
-                        <div class="flex gap-1 text-ochre-500 mb-3 text-sm">
-                            ⭐⭐⭐⭐⭐
+                        <div class="flex gap-1 text-gold-500 mb-3">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         </div>
                         <p class="text-xs text-slateDark/70 leading-relaxed mb-4 flex-grow">
-                            Ξετρελαθήκαμε με το δείπνο μας στις Κυκλάδες. Να δοκιμάσετε την σαλάτα 🥗 Πάρος που είναι εξαιρετική. Το κριθαρότο γαρίδας αγαπημένο πιάτο🤤!!! Οι υπάλληλοι εξαιρετικοί ένας προς έναν💕! ΟΛΑ ΑΠΙΘΑΝΑΑΑΑΑΑ!!!!
+                            Ξετρελαθήκαμε με το δείπνο μας στις Κυκλάδες. Να δοκιμάσετε την σαλάτα Πάρος που είναι εξαιρετική. Το κριθαρότο γαρίδας αγαπημένο πιάτο. Οι υπάλληλοι εξαιρετικοί ένας προς έναν. ΟΛΑ ΑΠΙΘΑΝΑ!
                         </p>
                         <p class="text-[10px] text-slateDark/40 italic mt-auto pt-4 border-t border-sand-200">πριν από 4 μήνες</p>
                     </div>
 
                     <!-- Review 3 -->
-                    <div class="reveal reveal-d2 bg-sand-50 p-8 rounded border border-sand-200 flex flex-col md:col-span-2 lg:col-span-1">
+                    <div class="reveal reveal-card bg-sand-50 p-8 rounded border border-sand-200 flex flex-col shadow-sm hover:shadow-md transition-shadow duration-500 md:col-span-2 lg:col-span-1" style="transition-delay: 200ms;">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-10 h-10 rounded-full bg-brand-900 flex items-center justify-center text-white font-bold text-sm">AQ</div>
                             <div>
@@ -360,8 +358,12 @@
                                 <p class="text-[11px] text-slateDark/50">Τοπικός οδηγός · 135 κριτικές</p>
                             </div>
                         </div>
-                        <div class="flex gap-1 text-ochre-500 mb-3 text-sm">
-                            ⭐⭐⭐⭐⭐
+                        <div class="flex gap-1 text-gold-500 mb-3">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         </div>
                         <p class="text-xs text-slateDark/70 leading-relaxed mb-4 flex-grow">
                             Πολύ καλό φαγητό, ποιοτικά υλικά, ευγενέστατο προσωπικό, τίμιες τιμές, ωραίο περιβάλλον.
@@ -371,11 +373,11 @@
 
                 </div>
 
-                <!-- Button to Google Maps -->
-                <div class="mt-16 text-center reveal reveal-d3">
+                <!-- Button -->
+                <div class="mt-16 text-center reveal">
                     <a href="https://maps.google.com/?q=Ψαροταβέρνα+Κυκλάδες+Σίνδος" 
                        target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-900 text-white text-[13px] font-medium tracking-wide rounded hover:bg-brand-800 transition-colors">
+                       class="btn-premium inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-900 text-white text-[13px] font-medium tracking-wide rounded">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
@@ -387,41 +389,47 @@
         </section>
 
         <!-- ─────────────────────────── CONTACT (FINALE) ─────────────── -->
-        <section id="contact" class="bg-brand-900 text-white">
-            <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-24 sm:pt-32 pb-20 sm:pb-28">
+        <section id="contact" class="bg-brand-900 text-white overflow-hidden relative">
+            
+            <!-- Abstract background shape for premium feel -->
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-800 rounded-full blur-[120px] opacity-30 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-24 sm:pt-32 pb-20 sm:pb-28 relative z-10">
 
                 <div class="text-center mb-16 sm:mb-20">
                     <p class="reveal text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60">Επικοινωνία</p>
-                    <h2 class="reveal reveal-d1 text-3xl sm:text-4xl font-bold text-white mt-4 tracking-tight leading-[1.05]">
-                        Ελάτε να μας βρείτε
+                    <h2 class="reveal text-3xl sm:text-4xl font-bold text-white mt-4 tracking-tight leading-[1.1]">
+                        <span class="block reveal-text">Ελάτε να μας βρείτε</span>
                     </h2>
-                    <p class="reveal reveal-d2 mt-5 text-brand-100/50 text-sm max-w-md mx-auto leading-relaxed">
-                        Στον πυρήνα της Σίνδου — με μυρωδιά Αιγαίου.
-                    </p>
+                    <div class="reveal">
+                        <p class="mt-5 text-brand-100/60 text-sm max-w-md mx-auto leading-relaxed">
+                            Στον πυρήνα της Σίνδου — με μυρωδιά Αιγαίου.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="grid lg:grid-cols-2 gap-14 lg:gap-16 items-start">
 
                     <div class="space-y-11">
                         
-                        <div class="reveal">
+                        <div class="reveal reveal-card">
                             <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Τηλέφωνο</p>
-                            <a href="tel:+302310797997" class="text-xl sm:text-2xl font-bold text-white u-link">
+                            <a href="tel:+302310797997" class="text-xl sm:text-2xl font-bold text-white u-link hover:text-brand-100 transition-colors">
                                 231 079 7997
                             </a>
                             <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">Κρατήσεις &amp; παραγγελίες</p>
                         </div>
 
-                        <div class="reveal reveal-d1">
+                        <div class="reveal reveal-card" style="transition-delay: 100ms;">
                             <p class="text-[10px] tracking-[0.4em] uppercase font-medium text-brand-100/60 mb-3">Διεύθυνση</p>
                             <p class="text-xl sm:text-2xl font-bold text-white">Χ. Ακριβού 7</p>
                             <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">Σίνδος 574 00, Θεσσαλονίκη</p>
                         </div>
 
-                        <div class="reveal reveal-d2 pt-4">
+                        <div class="reveal reveal-card pt-4" style="transition-delay: 200ms;">
                             <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
                                target="_blank" rel="noopener noreferrer"
-                               class="inline-flex items-center gap-2.5 px-6 py-3 bg-white text-brand-950 rounded text-[13px] font-medium tracking-wide hover:bg-sand-100 transition-colors">
+                               class="btn-premium inline-flex items-center gap-2.5 px-6 py-3 bg-white text-brand-950 rounded text-[13px] font-medium tracking-wide hover:bg-sand-100">
                                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                                 </svg>
@@ -430,9 +438,9 @@
                         </div>
                     </div>
 
-                    <!-- Ο Χάρτης με το εφέ θόλωσης -->
-                    <div class="reveal reveal-d1">
-                        <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/30 bg-brand-800">
+                    <!-- Map -->
+                    <div class="reveal reveal-card" style="transition-delay: 300ms;">
+                        <div class="relative w-full h-[24rem] sm:h-[30rem] overflow-hidden shadow-2xl shadow-black/40 bg-brand-800">
                             <iframe
                                 title="Χάρτης — Ψαροταβέρνα Κυκλάδες"
                                 src="https://maps.google.com/maps?q=Ψαροταβέρνα+Κυκλάδες+Σίνδος&z=17&output=embed"
@@ -508,7 +516,6 @@
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.classList.add('hidden');
-                // Start typing after loader fades
                 setTimeout(typeWriter, 800);
             }, 2000);
         });
@@ -535,13 +542,13 @@
             });
         });
 
-        // ── Header Shadow ──
+        // ── Header Shadow & Blur ──
         const header = document.getElementById('site-header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 8);
         }, { passive: true });
 
-        // ── Reveal on scroll ──
+        // ── Reveal Animations (Intersection Observer) ──
         const io = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -553,7 +560,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-        // ── Smooth Blur & Fade on Scroll ──
+        // ── Smooth Blur & Fade on Scroll (Hero) ──
         const heroContent = document.getElementById('hero-content');
         const scrollIndicator = document.getElementById('scroll-indicator');
         let ticking = false;
@@ -562,17 +569,12 @@
             if (!ticking) {
                 window.requestAnimationFrame(() => {
                     const scrollY = window.scrollY;
-                    
-                    // Blur effect: applies only when scrolling down the first section
                     if (scrollY < window.innerHeight) {
-                        const blurAmount = Math.min(scrollY / 30, 12); // Max 12px blur
-                        const opacityAmount = Math.max(1 - (scrollY / 500), 0); // Fades out
+                        const blurAmount = Math.min(scrollY / 30, 12);
+                        const opacityAmount = Math.max(1 - (scrollY / 500), 0);
                         
-                        // Apply to text content
                         heroContent.style.filter = `blur(${blurAmount}px)`;
                         heroContent.style.opacity = opacityAmount;
-                        
-                        // Fade out scroll indicator faster
                         scrollIndicator.style.opacity = Math.max(1 - (scrollY / 200), 0);
                     }
                     ticking = false;
