@@ -111,6 +111,17 @@
             50% { opacity: 0; }
         }
 
+        /* ── Smooth Zoom Animation (Ken Burns) ────────────── */
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .animate-slow-zoom {
+            animation: slowZoom 25s ease-in-out infinite;
+            will-change: transform;
+        }
+
         /* ── Elegant Scroll Indicator ─────────────────────── */
         @keyframes scrollDot {
             0% { transform: translateY(-100%); }
@@ -206,18 +217,20 @@
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
         <section id="top" class="relative min-h-[88vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
-            <!-- Background Image: kiklades.jpg με απαλό θόλωμα -->
-            <div class="absolute inset-0 z-0">
-                <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[4px] opacity-60 scale-105">
+            <!-- Background Image με Zoom Effect και το θόλωμα που είχε πριν -->
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <img src="kiklades.jpg" alt="Κυκλάδες background" class="w-full h-full object-cover blur-[8px] opacity-40 animate-slow-zoom">
+                <!-- Το λευκό overlay που υπήρχε και πριν -->
+                <div class="absolute inset-0 bg-white/60"></div>
             </div>
 
-            <!-- Blur & Fade Wrapper -->
+            <!-- Blur & Fade Wrapper (για το scroll) -->
             <div id="hero-content" class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center transition-all duration-300">
                 
                 <!-- Typewriter Titles -->
-                <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter drop-shadow-md"></h1>
+                <h1 id="type-title" class="text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900 leading-[1.2] tracking-wide mb-6 whitespace-pre-wrap cursor-typewriter drop-shadow-sm"></h1>
                 
-                <p id="type-sub" class="text-brand-900 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap drop-shadow-md"></p>
+                <p id="type-sub" class="text-brand-800 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto whitespace-pre-wrap drop-shadow-sm"></p>
                 
             </div>
 
@@ -326,8 +339,6 @@
                             <p class="text-xl sm:text-2xl font-bold text-white">Χ. Ακριβού 7</p>
                             <p class="mt-3 text-[11px] tracking-wider text-brand-100/40">Σίνδος 574 00, Θεσσαλονίκη</p>
                         </div>
-
-                        <!-- Αφαιρέθηκε το Ωράριο -->
 
                         <div class="reveal reveal-d2 pt-4">
                             <a href="https://www.facebook.com/kyklades.psarotaverna.sindos/"
