@@ -120,35 +120,35 @@
 
         .hero-svg {
             opacity: 0;
-            animation: smoothFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards;
+            animation: smoothFadeUp 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s forwards;
         }
 
-        /* ── SVG Animation (Toasting) ─────────────────────── */
+        /* ── Realistic SVG Animation (Toasting) ───────────── */
         .arm-left {
-            transform-origin: 230px 210px;
-            animation: clinkLeft 5s ease-in-out infinite;
+            transform-origin: 260px 220px;
+            animation: clinkLeft 4s ease-in-out infinite;
         }
         .arm-right {
-            transform-origin: 370px 210px;
-            animation: clinkRight 5s ease-in-out infinite;
+            transform-origin: 540px 220px;
+            animation: clinkRight 4s ease-in-out infinite;
         }
-        .sparkles {
-            transform-origin: 300px 100px;
-            animation: sparkle 5s ease-in-out infinite;
+        .sparkle {
+            transform-origin: 400px 140px;
+            animation: sparkleFade 4s ease-in-out infinite;
             opacity: 0;
         }
 
         @keyframes clinkLeft {
             0%, 15%, 100% { transform: rotate(0deg); }
-            25%, 35% { transform: rotate(6deg); }
+            20%, 30% { transform: rotate(3deg); }
         }
         @keyframes clinkRight {
             0%, 15%, 100% { transform: rotate(0deg); }
-            25%, 35% { transform: rotate(-6deg); }
+            20%, 30% { transform: rotate(-3deg); }
         }
-        @keyframes sparkle {
-            0%, 20%, 40%, 100% { opacity: 0; transform: scale(0.8); }
-            25%, 35% { opacity: 1; transform: scale(1.1); }
+        @keyframes sparkleFade {
+            0%, 18%, 32%, 100% { opacity: 0; transform: scale(0.8); }
+            22%, 28% { opacity: 1; transform: scale(1); }
         }
 
         /* ── Underline link ───────────────────────────────── */
@@ -233,8 +233,7 @@
     <main>
 
         <!-- ─────────────────────────── HERO ─────────────────────────── -->
-        <!-- Λευκό φόντο, κείμενο και SVG στο χρώμα του brand -->
-        <section id="top" class="relative min-h-[85vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
+        <section id="top" class="relative min-h-[88vh] flex flex-col items-center justify-center bg-white overflow-hidden pt-12 pb-20">
             
             <div class="relative z-10 w-full max-w-4xl mx-auto px-5 flex flex-col items-center text-center">
                 
@@ -247,64 +246,87 @@
                     Αυθεντική θαλασσινή γαστρονομία και νησιώτικη ατμόσφαιρα στην καρδιά της Σίνδου.
                 </p>
 
-                <!-- SVG Animation: Άντρας και Γυναίκα τσουγκρίζουν τα ποτήρια -->
-                <div class="hero-svg w-full max-w-xl mx-auto mt-4">
-                    <svg viewBox="0 0 600 300" class="w-full h-auto drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Premium, Realistic Line-Art SVG Animation -->
+                <div class="hero-svg w-full max-w-3xl mx-auto mt-2">
+                    <svg viewBox="0 0 800 350" class="w-full h-auto drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
                         
-                        <!-- Τραπέζι -->
-                        <line x1="100" y1="260" x2="500" y2="260" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                        <!-- Πιάτο -->
-                        <ellipse cx="300" cy="260" rx="40" ry="8" fill="none" stroke="#185f78" stroke-width="1" opacity="0.4"/>
+                        <!-- Table & Setting -->
+                        <path d="M 100 280 Q 400 290 700 280" stroke="#185f78" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                        <ellipse cx="400" cy="280" rx="35" ry="6" stroke="#185f78" stroke-width="1" opacity="0.3"/>
+                        <!-- Wine Bottle (Center) -->
+                        <path d="M 395 280 L 395 230 Q 395 220 400 210 Q 405 220 405 230 L 405 280 Z" stroke="#185f78" stroke-width="1.5" stroke-linejoin="round" fill="#185f78" fill-opacity="0.05"/>
+                        <path d="M 398 210 L 402 210" stroke="#185f78" stroke-width="1.5"/>
 
-                        <!-- ΑΝΤΡΑΣ (Αριστερά) -->
+                        <!-- LEFT FIGURE (Man) -->
                         <g>
-                            <!-- Κεφάλι -->
-                            <circle cx="230" cy="160" r="22" stroke="#185f78" stroke-width="2"/>
-                            <!-- Σώμα -->
-                            <path d="M 190 260 Q 210 200 230 200 Q 250 200 270 260" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <!-- Χέρι -->
+                            <!-- Head & Body Outline -->
+                            <path d="M 180 280 C 200 240 230 200 250 200 C 260 200 270 210 275 230 C 275 230 285 250 280 280" stroke="#185f78" stroke-width="2" stroke-linecap="round" fill="#185f78" fill-opacity="0.03"/>
+                            <!-- Face Profile -->
+                            <path d="M 265 170 C 265 180 260 195 270 200 C 275 205 280 210 280 220" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <!-- Hair -->
+                            <path d="M 245 170 C 240 160 245 150 255 155 C 265 160 270 170 270 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <!-- Neck / Collar -->
+                            <path d="M 260 225 L 250 250 M 275 225 L 285 250" stroke="#185f78" stroke-width="1" opacity="0.5"/>
+                            
+                            <!-- Arm & Glass -->
                             <g class="arm-left">
-                                <path d="M 230 210 L 270 150 L 280 130" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                                <!-- Ποτήρι -->
-                                <path d="M 280 130 L 280 100 M 270 100 L 290 100 M 270 100 Q 280 120 290 100" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
-                                <!-- Κρασί -->
-                                <path d="M 273 105 Q 280 115 287 105 Z" fill="#185f78" opacity="0.3"/>
+                                <!-- Arm -->
+                                <path d="M 260 220 Q 310 250 360 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                                <!-- Hand holding glass -->
+                                <circle cx="360" cy="180" r="4" fill="#185f78"/>
+                                <!-- Wine Glass -->
+                                <path d="M 360 175 L 360 140 M 350 140 L 370 140 M 350 140 Q 360 165 370 140" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                                <!-- Wine liquid -->
+                                <path d="M 354 145 Q 360 155 366 145 Z" fill="#185f78" fill-opacity="0.3"/>
                             </g>
                         </g>
 
-                        <!-- ΓΥΝΑΙΚΑ (Δεξιά) -->
+                        <!-- RIGHT FIGURE (Woman) -->
                         <g>
-                            <!-- Κεφάλι -->
-                            <circle cx="370" cy="160" r="22" stroke="#185f78" stroke-width="2"/>
-                            <!-- Μαλλιά -->
-                            <path d="M 348 160 Q 340 190 350 220" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M 392 160 Q 400 190 390 220" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <!-- Σώμα -->
-                            <path d="M 330 260 Q 350 200 370 200 Q 390 200 410 260" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <!-- Χέρι -->
+                            <!-- Head & Body Outline -->
+                            <path d="M 620 280 C 600 240 570 200 550 200 C 540 200 530 210 525 230 C 525 230 515 250 520 280" stroke="#185f78" stroke-width="2" stroke-linecap="round" fill="#185f78" fill-opacity="0.03"/>
+                            <!-- Face Profile -->
+                            <path d="M 535 170 C 535 180 540 195 530 200 C 525 205 520 210 520 220" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                            <!-- Hair & Bun -->
+                            <path d="M 555 170 C 560 160 555 150 545 155 C 535 160 530 170 530 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="560" cy="170" r="10" stroke="#185f78" stroke-width="1.5" fill="#185f78" fill-opacity="0.05"/>
+                            <!-- Earring -->
+                            <circle cx="545" cy="200" r="2" fill="#185f78"/>
+                            <!-- Neckline -->
+                            <path d="M 540 225 L 550 250 M 525 225 L 515 250" stroke="#185f78" stroke-width="1" opacity="0.5"/>
+                            
+                            <!-- Arm & Glass -->
                             <g class="arm-right">
-                                <path d="M 370 210 L 330 150 L 320 130" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                                <!-- Ποτήρι -->
-                                <path d="M 320 130 L 320 100 M 310 100 L 330 100 M 310 100 Q 320 120 330 100" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
-                                <!-- Κρασί -->
-                                <path d="M 313 105 Q 320 115 327 105 Z" fill="#185f78" opacity="0.3"/>
+                                <!-- Arm -->
+                                <path d="M 540 220 Q 490 250 440 180" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                                <!-- Hand holding glass -->
+                                <circle cx="440" cy="180" r="4" fill="#185f78"/>
+                                <!-- Wine Glass -->
+                                <path d="M 440 175 L 440 140 M 430 140 L 450 140 M 430 140 Q 440 165 450 140" stroke="#185f78" stroke-width="1.5" stroke-linecap="round"/>
+                                <!-- Wine liquid -->
+                                <path d="M 434 145 Q 440 155 446 145 Z" fill="#185f78" fill-opacity="0.3"/>
                             </g>
                         </g>
 
-                        <!-- ΕΦΕ ΤΣΟΥΓΚΡΙΣΜΑΤΟΣ (Λάμψεις) -->
-                        <g class="sparkles">
-                            <line x1="300" y1="90" x2="300" y2="75" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="285" y1="95" x2="275" y2="85" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="315" y1="95" x2="325" y2="85" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="290" y1="105" x2="280" y2="100" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="310" y1="105" x2="320" y2="100" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                        <!-- SPARKLE EFFECT AT THE POINT OF CONTACT -->
+                        <g class="sparkle">
+                            <circle cx="400" cy="140" r="15" stroke="#185f78" stroke-width="1" opacity="0.4" fill="none"/>
+                            <line x1="400" y1="115" x2="400" y2="125" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="400" y1="155" x2="400" y2="165" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="375" y1="140" x2="385" y2="140" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="415" y1="140" x2="425" y2="140" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            
+                            <line x1="383" y1="123" x2="388" y2="128" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="417" y1="123" x2="412" y2="128" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="383" y1="157" x2="388" y2="152" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="417" y1="157" x2="412" y2="152" stroke="#185f78" stroke-width="2" stroke-linecap="round"/>
                         </g>
 
                     </svg>
                 </div>
             </div>
 
-            <!-- Scroll cue (προσαρμοσμένο για λευκό φόντο) -->
+            <!-- Scroll cue -->
             <div class="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-cue">
                 <span class="block w-px h-10 bg-gradient-to-b from-transparent via-brand-900/30 to-transparent"></span>
             </div>
